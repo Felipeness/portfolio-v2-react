@@ -56,7 +56,7 @@ export function BookHero({ locale }: BookHeroProps) {
               </h3>
               <div className="w-16 h-[2px] bg-white/40 mx-auto mb-4" />
               <p className="text-white/80 text-sm font-body">
-                Felipe Barcelos
+                Felipe Soares
               </p>
               <p className="text-white/60 text-xs font-mono mt-2">
                 Holonomic Architecture
@@ -97,7 +97,7 @@ export function BookHero({ locale }: BookHeroProps) {
           </div>
 
           <a
-            href="https://felipebarcelos.dev/book"
+            href="https://felipeness.dev/book"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors"

@@ -30,7 +30,7 @@ export function Philosophy({ locale }: PhilosophyProps) {
 
     const spans = words.map((word) => {
       const span = document.createElement('span');
-      span.style.color = 'rgba(255,255,255,0.12)';
+      span.style.color = 'rgba(255,255,255,0.15)';
       span.style.display = 'inline';
       span.textContent = word === ' ' ? '\u00A0' : word;
       span.setAttribute('aria-hidden', 'true');
@@ -41,7 +41,7 @@ export function Philosophy({ locale }: PhilosophyProps) {
     const ctx = gsap.context(() => {
       gsap.to(spans, {
         color: 'rgba(255,255,255,0.95)',
-        stagger: 0.05,
+        stagger: 0.03,
         scrollTrigger: {
           trigger: element,
           start: 'top 75%',

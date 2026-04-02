@@ -31,7 +31,7 @@ export function Hero({ locale }: HeroProps) {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Hero scale-fade on scroll (parallax exit)
+      // Hero scale-fade on scroll (parallax exit — Apple uses 0.5s smoothing)
       gsap.to(sectionRef.current, {
         scale: 0.9,
         opacity: 0,
@@ -40,7 +40,7 @@ export function Hero({ locale }: HeroProps) {
           trigger: sectionRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: 1,
+          scrub: 0.5,
         },
       });
 

@@ -91,7 +91,7 @@ const translations = {
       secondary: 'View my work',
     },
     footer: {
-      copyright: 'Felipe Barcelos. All rights reserved.',
+      copyright: 'Felipe Soares. All rights reserved.',
       builtWith: 'Built with React, TanStack Start & GSAP',
     },
     commandPalette: {
@@ -191,7 +191,7 @@ const translations = {
       secondary: 'Veja meu trabalho',
     },
     footer: {
-      copyright: 'Felipe Barcelos. Todos os direitos reservados.',
+      copyright: 'Felipe Soares. Todos os direitos reservados.',
       builtWith: 'Feito com React, TanStack Start & GSAP',
     },
     commandPalette: {

@@ -15,7 +15,7 @@ export function useScrollReveal(
   options: ScrollRevealOptions = {},
 ) {
   const {
-    y = 40,
+    y = 30,
     duration = 0.8,
     stagger = 0.1,
     start = 'top 85%',

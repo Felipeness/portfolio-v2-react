@@ -23,17 +23,17 @@ export function WhatIDo({ locale }: WhatIDoProps) {
           pin: true,
           start: 'top top',
           end: () => `+=${items.length * 400}`,
-          scrub: 1,
+          scrub: 0.5,
           anticipatePin: 1,
         },
       });
 
       items.forEach((item, i) => {
-        // Fade in
+        // Fade in with Apple-subtle 30px entrance
         tl.fromTo(
           item,
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1 },
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
           i * 2,
         );
 

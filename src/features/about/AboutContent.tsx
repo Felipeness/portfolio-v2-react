@@ -11,7 +11,7 @@ export function AboutContent() {
       <div ref={bioRef}>
         <div className="prose">
           <p>
-            I'm Felipe Barcelos, a Staff Engineer and Solution Architect with 10+ years
+            I'm Felipe Soares, a Staff Engineer and Solution Architect with 10+ years
             of experience building high-impact systems across fintech, SaaS, and enterprise
             domains.
           </p>

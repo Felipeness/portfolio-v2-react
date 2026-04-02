@@ -49,7 +49,7 @@ const projects: OssProject[] = [
     name: 'otel-dev',
     description: 'Developer-friendly OpenTelemetry setup for Node.js microservices.',
     role: 'Author',
-    url: 'https://github.com/felipebarcelos/otel-dev',
+    url: 'https://github.com/felipeness/otel-dev',
   },
 ];
 
