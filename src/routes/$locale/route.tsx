@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 import { isValidLocale } from '~/shared/types/locale';
 import type { Locale } from '~/shared/types/locale';
@@ -19,6 +19,10 @@ function LocaleLayout() {
   const { locale } = Route.useParams();
   const validLocale = locale as Locale;
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.lang = validLocale === 'pt-br' ? 'pt-BR' : 'en';
+  }, [validLocale]);
 
   return (
     <>

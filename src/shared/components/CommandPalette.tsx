@@ -21,6 +21,9 @@ export function CommandPalette({ locale, open, onOpenChange }: CommandPalettePro
         e.preventDefault();
         onOpenChange(!open);
       }
+      if (e.key === 'Escape' && open) {
+        onOpenChange(false);
+      }
     }
 
     document.addEventListener('keydown', handleKeyDown);
@@ -37,13 +40,15 @@ export function CommandPalette({ locale, open, onOpenChange }: CommandPalettePro
   useEffect(() => {
     const lower = search.toLowerCase();
     if (lower === 'holonomic') {
-      navigateTo(`/${locale}/book`);
+      navigate({ to: `/${locale}/book` as '/' });
+      onOpenChange(false);
+      setSearch('');
     } else if (lower === 'hire') {
-      window.location.href = 'mailto:felipe@felipebarcelos.dev';
+      window.location.href = 'mailto:felipecoelho.ness@gmail.com';
       onOpenChange(false);
       setSearch('');
     }
-  }, [search, locale]);
+  }, [search, locale, navigate, onOpenChange]);
 
   if (!open) return null;
 

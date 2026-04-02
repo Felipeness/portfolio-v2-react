@@ -25,17 +25,24 @@ export function useLenis() {
         // ScrollTrigger update is handled by the ticker
       });
 
-      gsap.ticker.add((time) => {
+      const tickerCallback = (time: number) => {
         lenis?.raf(time * 1000);
-      });
-
+      };
+      gsap.ticker.add(tickerCallback);
       gsap.ticker.lagSmoothing(0);
+
+      // Store for cleanup
+      (lenis as any)._tickerCallback = tickerCallback;
     }
 
     init();
 
     return () => {
-      lenis?.destroy();
+      if (lenis) {
+        const cb = (lenis as any)._tickerCallback;
+        if (cb) gsap.ticker.remove(cb);
+        lenis.destroy();
+      }
     };
   }, []);
 }
