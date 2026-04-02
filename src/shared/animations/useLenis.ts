@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react';
-import { gsap } from './gsap-setup';
+import { gsap, ScrollTrigger } from './gsap-setup';
 
 function prefersReducedMotion(): boolean {
   if (typeof window === 'undefined') return true;
@@ -22,7 +22,7 @@ export function useLenis() {
       });
 
       lenis.on('scroll', () => {
-        // ScrollTrigger update is handled by the ticker
+        ScrollTrigger.update();
       });
 
       const tickerCallback = (time: number) => {
