@@ -1,0 +1,29 @@
+@theme {
+  --color-brand-blue: #0119E5;
+  --color-brand-orange: #E56500;
+  --color-brand-red: #E61100;
+
+  --color-bg-base: #000000;
+  --color-bg-elevated: #0A0A0A;
+  --color-bg-surface: #111111;
+  --color-bg-surface-hover: #1A1A1A;
+
+  --color-border-subtle: #1A1A1A;
+  --color-border-default: #2A2A2A;
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E5E5E5;
+  --color-text-tertiary: #B3B3B3;
+  --color-text-muted: #808080;
+
+  --color-orange: #E56500;
+  --color-orange-hover: #FF8C32;
+  --color-orange-light: #FFA965;
+
+  --color-blue-text: #6676FE;
+  --color-red-text: #FF4232;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
