@@ -31,6 +31,19 @@ export function Hero({ locale }: HeroProps) {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Hero scale-fade on scroll (parallax exit)
+      gsap.to(sectionRef.current, {
+        scale: 0.9,
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
       // Staggered entrance for tag, description, buttons
       gsap.from(tagRef.current, {
         y: 20,
@@ -87,7 +100,7 @@ export function Hero({ locale }: HeroProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="sticky top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background grid */}
       <div

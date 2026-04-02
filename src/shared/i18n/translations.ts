@@ -60,6 +60,36 @@ const translations = {
         description: "Let's build something meaningful together.",
       },
     },
+    whatIDo: {
+      title: 'What I Do',
+      capabilities: [
+        'Architecting distributed systems',
+        'Leading engineering teams',
+        'Shipping enterprise SaaS',
+        'Writing about it all',
+      ],
+    },
+    impact: {
+      title: 'Impact in Numbers',
+      metrics: [
+        { value: 10, prefix: '', suffix: '+', label: 'Years of experience' },
+        { value: 60, prefix: '-', suffix: '%', label: 'LCP reduction' },
+        { value: 30, prefix: '-', suffix: '%', label: 'Release cycle time' },
+        { value: 62, prefix: '', suffix: '', label: 'Chapters published' },
+      ],
+    },
+    philosophy: {
+      text: 'I think in systems, write in TypeScript and Go, and believe that good architecture makes the complex feel simple. Every line of code is a decision. Every abstraction is a trade-off. The best systems are the ones you barely notice.',
+    },
+    recentWriting: {
+      title: 'Recent Writing',
+      viewAll: 'View all posts',
+    },
+    contactCTA: {
+      title: "Let's build something together",
+      primary: 'Get in touch',
+      secondary: 'View my work',
+    },
     footer: {
       copyright: 'Felipe Barcelos. All rights reserved.',
       builtWith: 'Built with React, TanStack Start & GSAP',
@@ -129,6 +159,36 @@ const translations = {
         title: 'Contato',
         description: 'Vamos construir algo significativo juntos.',
       },
+    },
+    whatIDo: {
+      title: 'O Que Eu Faco',
+      capabilities: [
+        'Arquitetando sistemas distribuidos',
+        'Liderando times de engenharia',
+        'Entregando SaaS enterprise',
+        'Escrevendo sobre tudo isso',
+      ],
+    },
+    impact: {
+      title: 'Impacto em Numeros',
+      metrics: [
+        { value: 10, prefix: '', suffix: '+', label: 'Anos de experiencia' },
+        { value: 60, prefix: '-', suffix: '%', label: 'Reducao de LCP' },
+        { value: 30, prefix: '-', suffix: '%', label: 'Ciclo de release' },
+        { value: 62, prefix: '', suffix: '', label: 'Capitulos publicados' },
+      ],
+    },
+    philosophy: {
+      text: 'Eu penso em sistemas, escrevo em TypeScript e Go, e acredito que boa arquitetura torna o complexo simples. Cada linha de codigo e uma decisao. Cada abstracao e um trade-off. Os melhores sistemas sao os que voce mal percebe.',
+    },
+    recentWriting: {
+      title: 'Escrita Recente',
+      viewAll: 'Ver todos os posts',
+    },
+    contactCTA: {
+      title: 'Vamos construir algo juntos',
+      primary: 'Entre em contato',
+      secondary: 'Veja meu trabalho',
     },
     footer: {
       copyright: 'Felipe Barcelos. Todos os direitos reservados.',

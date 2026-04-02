@@ -30,7 +30,7 @@ function LocaleLayout() {
         locale={validLocale}
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}
       />
-      <main className="pt-16 min-h-screen">
+      <main>
         <Outlet />
       </main>
       <Footer locale={validLocale} />
