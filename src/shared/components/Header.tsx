@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 import { Link, useNavigate } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
+import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 
@@ -33,9 +34,33 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const translations = t(locale);
   const navigate = useNavigate();
+  const headerRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined' || !headerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        start: 'top -80',
+        end: 99999,
+        onUpdate: (self) => {
+          const direction = self.direction;
+          const scrollY = window.scrollY;
+
+          if (direction === 1 && scrollY > 100) {
+            gsap.to(headerRef.current, { y: '-100%', duration: 0.3, ease: 'power2.out' });
+          } else {
+            gsap.to(headerRef.current, { y: '0%', duration: 0.3, ease: 'power2.out' });
+          }
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle backdrop-blur-xl bg-bg-base/80">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle backdrop-blur-xl bg-bg-base/80 will-change-transform">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/$locale" params={{ locale }} className="flex items-center gap-2">
