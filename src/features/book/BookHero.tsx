@@ -1,5 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
-import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
+import { gsap } from '~/shared/animations/gsap-setup';
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
@@ -18,7 +19,7 @@ export function BookHero({ locale }: BookHeroProps) {
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
     if (!bookRef.current || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {

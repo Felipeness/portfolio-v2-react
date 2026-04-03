@@ -2,7 +2,8 @@ import { useRef, useLayoutEffect } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
-import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
+import { gsap } from '~/shared/animations/gsap-setup';
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 import { caseStudies } from '~/features/cases/data';
 
 interface FeaturedCasesProps {
@@ -25,7 +26,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
 
   useLayoutEffect(() => {
     if (!sectionRef.current || typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const track = sectionRef.current!.querySelector(

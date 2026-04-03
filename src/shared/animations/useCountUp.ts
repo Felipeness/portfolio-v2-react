@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react';
 import type { RefObject } from 'react';
-import { gsap, ScrollTrigger } from './gsap-setup';
+import { gsap } from './gsap-setup';
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 
 interface CountUpOptions {
   duration?: number;
@@ -23,7 +24,7 @@ export function useCountUp(
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (prefersReducedMotion()) {
       if (ref.current) {
         ref.current.textContent = `${prefix}${value}${suffix}`;
       }

@@ -2,7 +2,8 @@ import { useRef, useLayoutEffect } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
-import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
+import { gsap } from '~/shared/animations/gsap-setup';
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 import { useSplitText } from '~/shared/animations/useSplitText';
 import { useLenis } from '~/shared/animations/useLenis';
 
@@ -27,7 +28,7 @@ export function Hero({ locale }: HeroProps) {
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {

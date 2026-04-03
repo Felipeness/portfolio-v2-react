@@ -1,21 +1,22 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from './gsap-setup';
-
-function prefersReducedMotion(): boolean {
-  if (typeof window === 'undefined') return true;
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 
 export function useLenis() {
-  useLayoutEffect(() => {
-    if (prefersReducedMotion() || typeof window === 'undefined') return;
+  const lenisRef = useRef<any>(null);
+  const tickerRef = useRef<((time: number) => void) | null>(null);
 
-    let lenis: InstanceType<typeof import('lenis').default> | undefined;
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (prefersReducedMotion()) return;
+
+    let mounted = true;
 
     async function init() {
       const Lenis = (await import('lenis')).default;
+      if (!mounted) return;
 
-      lenis = new Lenis({
+      const lenis = new Lenis({
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
@@ -26,23 +27,21 @@ export function useLenis() {
       });
 
       const tickerCallback = (time: number) => {
-        lenis?.raf(time * 1000);
+        lenis.raf(time * 1000);
       };
       gsap.ticker.add(tickerCallback);
       gsap.ticker.lagSmoothing(0);
 
-      // Store for cleanup
-      (lenis as any)._tickerCallback = tickerCallback;
+      lenisRef.current = lenis;
+      tickerRef.current = tickerCallback;
     }
 
     init();
 
     return () => {
-      if (lenis) {
-        const cb = (lenis as any)._tickerCallback;
-        if (cb) gsap.ticker.remove(cb);
-        lenis.destroy();
-      }
+      mounted = false;
+      if (tickerRef.current) gsap.ticker.remove(tickerRef.current);
+      if (lenisRef.current) lenisRef.current.destroy();
     };
   }, []);
 }

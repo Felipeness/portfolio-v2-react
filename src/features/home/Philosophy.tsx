@@ -1,7 +1,8 @@
 import { useRef, useLayoutEffect } from 'react';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
-import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
+import { gsap } from '~/shared/animations/gsap-setup';
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 
 interface PhilosophyProps {
   locale: Locale;
@@ -14,7 +15,7 @@ export function Philosophy({ locale }: PhilosophyProps) {
 
   useLayoutEffect(() => {
     if (!textRef.current || typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
 
     const element = textRef.current;
     const text = element.textContent || '';

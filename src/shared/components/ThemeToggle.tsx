@@ -1,16 +1,17 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 type Theme = 'dark' | 'light';
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<Theme>('dark');
 
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') return;
+  useEffect(() => {
     const stored = localStorage.getItem('theme') as Theme | null;
     const initial = stored || 'dark';
     setTheme(initial);
     document.documentElement.setAttribute('data-theme', initial);
+    setMounted(true);
   }, []);
 
   function toggle() {
@@ -19,6 +20,8 @@ export function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
   }
+
+  if (!mounted) return <div className="w-8 h-8" />;
 
   return (
     <button

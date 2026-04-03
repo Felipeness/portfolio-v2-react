@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react';
 import type { RefObject } from 'react';
 import { gsap } from './gsap-setup';
+import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 
 export function useSplitText(
   ref: RefObject<HTMLElement | null>,
@@ -8,7 +9,7 @@ export function useSplitText(
 ) {
   useLayoutEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
     if (!ref.current) return;
 
     const element = ref.current;
