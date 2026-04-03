@@ -1,8 +1,30 @@
-import { useRef, useLayoutEffect } from 'react';
 import type { Locale } from '~/shared/types/locale';
+import type { ReactNode } from 'react';
 import { t } from '~/shared/i18n/utils';
-import { gsap } from '~/shared/animations/gsap-setup';
-import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
+
+const HIGHLIGHTED_PHRASES: Record<string, true> = {
+  'TypeScript and Go': true,
+  'TypeScript e Go': true,
+  'good architecture': true,
+  'boa arquitetura': true,
+};
+
+function highlightPhrases(text: string): ReactNode[] {
+  const phrases = Object.keys(HIGHLIGHTED_PHRASES);
+  const regex = new RegExp(`(${phrases.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+
+  const parts = text.split(regex);
+
+  return parts.map((part, i) =>
+    part in HIGHLIGHTED_PHRASES ? (
+      <span key={i} className="text-text-primary">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
 
 interface PhilosophyProps {
   locale: Locale;
@@ -10,72 +32,12 @@ interface PhilosophyProps {
 
 export function Philosophy({ locale }: PhilosophyProps) {
   const translations = t(locale);
-  const textRef = useRef<HTMLParagraphElement>(null);
-  const originalTextRef = useRef<string>('');
-
-  useLayoutEffect(() => {
-    if (!textRef.current || typeof window === 'undefined') return;
-    if (prefersReducedMotion()) return;
-
-    const element = textRef.current;
-    const text = element.textContent || '';
-    originalTextRef.current = text;
-    element.setAttribute('aria-label', text);
-
-    const words = text.split(/(\s+)/).filter(Boolean);
-
-    // Clear using DOM API
-    while (element.firstChild) {
-      element.removeChild(element.firstChild);
-    }
-
-    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-    const dimColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)';
-    const brightColor = isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.95)';
-
-    const spans = words.map((word) => {
-      const span = document.createElement('span');
-      span.style.color = dimColor;
-      span.style.display = 'inline';
-      span.style.transition = 'color 0.1s ease';
-      span.textContent = word === ' ' ? '\u00A0' : word;
-      span.setAttribute('aria-hidden', 'true');
-      element.appendChild(span);
-      return span;
-    });
-
-    const ctx = gsap.context(() => {
-      gsap.to(spans, {
-        color: brightColor,
-        stagger: 0.03,
-        scrollTrigger: {
-          trigger: element,
-          start: 'top 75%',
-          end: 'top 25%',
-          scrub: 0.3,
-        },
-      });
-    }, element);
-
-    return () => {
-      ctx.revert();
-      // Restore original text content safely
-      while (element.firstChild) {
-        element.removeChild(element.firstChild);
-      }
-      element.textContent = originalTextRef.current;
-      element.removeAttribute('aria-label');
-    };
-  }, [locale]);
 
   return (
-    <section className="relative z-10 bg-bg-base min-h-screen flex items-center justify-center py-32">
-      <div className="max-w-4xl mx-auto px-6">
-        <p
-          ref={textRef}
-          className="text-3xl md:text-5xl font-heading font-bold leading-tight"
-        >
-          {translations.philosophy.text}
+    <section className="py-24 md:py-40 bg-bg-base">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12">
+        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-heading font-medium text-text-tertiary leading-relaxed scroll-animate">
+          {highlightPhrases(translations.philosophy.text)}
         </p>
       </div>
     </section>
