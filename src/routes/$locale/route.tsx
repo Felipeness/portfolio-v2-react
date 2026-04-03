@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
-import { createFileRoute, Outlet, redirect, useLocation, useMatches } from '@tanstack/react-router';
+import {
+  createFileRoute,
+  Outlet,
+  redirect,
+  useLocation,
+  useMatches,
+} from '@tanstack/react-router';
 import { isValidLocale } from '~/shared/types/locale';
 import type { Locale } from '~/shared/types/locale';
 import { Header } from '~/shared/components/Header';
 import { Footer } from '~/shared/components/Footer';
 import { CommandPalette } from '~/shared/components/CommandPalette';
 import { ScrollProgress } from '~/shared/components/ScrollProgress';
-import { CustomCursor } from '~/shared/components/CustomCursor';
+import { useScrollAnimations } from '~/shared/animations/useScrollAnimations';
 
 export const Route = createFileRoute('/$locale')({
   beforeLoad: ({ params }) => {
@@ -25,6 +31,8 @@ function LocaleLayout() {
   const matches = useMatches();
   const routeKey = matches[matches.length - 1]?.id ?? '';
 
+  useScrollAnimations();
+
   useEffect(() => {
     document.documentElement.lang = validLocale === 'pt-br' ? 'pt-BR' : 'en';
   }, [validLocale]);
@@ -37,12 +45,16 @@ function LocaleLayout() {
   return (
     <>
       <ScrollProgress />
-      <CustomCursor />
       <Header
         locale={validLocale}
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}
       />
-      <main id="main-content" key={routeKey} tabIndex={-1} className="page-transition outline-none">
+      <main
+        id="main-content"
+        key={routeKey}
+        tabIndex={-1}
+        className="page-transition outline-none"
+      >
         <Outlet />
       </main>
       <Footer locale={validLocale} />
