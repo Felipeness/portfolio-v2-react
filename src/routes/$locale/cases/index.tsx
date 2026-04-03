@@ -24,19 +24,14 @@ function CasesPage() {
   const translations = t(validLocale);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-8 md:py-12 min-h-[calc(100vh-4rem)] flex flex-col">
-      <div className="mb-8 max-w-2xl">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-6 md:py-8 h-[calc(100vh-4rem)] flex flex-col overflow-hidden">
+      <div className="mb-4">
         <span className="section-tag mb-2">{translations.sections.cases.tag}</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-primary mt-3 mb-2">
+        <h2 className="font-heading text-2xl sm:text-3xl font-bold text-text-primary mt-2">
           {translations.sections.cases.title}
         </h2>
-        {translations.sections.cases.description && (
-          <p className="text-base text-text-tertiary leading-relaxed">
-            {translations.sections.cases.description}
-          </p>
-        )}
       </div>
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 min-h-0">
         <CaseGrid cases={caseStudies.filter((c) => c.locale === validLocale)} locale={validLocale} />
       </div>
     </section>

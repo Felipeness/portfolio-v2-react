@@ -200,7 +200,14 @@ const translations = {
             { name: 'Python', description: 'Scripts, automation, and ML experiments.' },
             { name: 'React & Next.js', description: 'Frontend framework of choice for SSR/SSG applications.' },
             { name: 'NestJS & Fastify', description: 'Backend frameworks for enterprise APIs and microservices.' },
-            { name: 'Astro', description: 'Static site generation for content-heavy sites with minimal JS.' },
+          ],
+        },
+        {
+          name: 'Message Queues & Orchestration',
+          items: [
+            { name: 'RabbitMQ', description: 'Message broker for async communication between microservices.' },
+            { name: 'Apache Kafka', description: 'Event streaming platform for high-throughput real-time pipelines.' },
+            { name: 'Temporal', description: 'Durable workflow orchestration for long-running business processes.' },
           ],
         },
         {
@@ -219,6 +226,9 @@ const translations = {
             { name: 'PostgreSQL', description: 'Primary relational database. Battle-tested and reliable.' },
             { name: 'Redis', description: 'In-memory cache, session store, and queue backend.' },
             { name: 'MongoDB', description: 'Document store for flexible schema use cases.' },
+            { name: 'MariaDB', description: 'MySQL-compatible relational DB for legacy and high-availability setups.' },
+            { name: 'Cassandra', description: 'Wide-column NoSQL for massive write-heavy distributed workloads.' },
+            { name: 'Pinecone / pgvector', description: 'Vector databases for AI embeddings, semantic search, and RAG pipelines.' },
           ],
         },
         {
@@ -226,6 +236,7 @@ const translations = {
           items: [
             { name: 'Grafana + Loki', description: 'Dashboards and log aggregation for distributed systems.' },
             { name: 'OpenTelemetry', description: 'Distributed tracing and metrics collection across services.' },
+            { name: 'Datadog', description: 'Full-stack monitoring, APM, and infrastructure observability.' },
             { name: 'Sentry', description: 'Error tracking and performance monitoring with source maps.' },
           ],
         },
@@ -440,7 +451,14 @@ const translations = {
             { name: 'Python', description: 'Scripts, automacao e experimentos com ML.' },
             { name: 'React & Next.js', description: 'Framework frontend de escolha para aplicacoes SSR/SSG.' },
             { name: 'NestJS & Fastify', description: 'Frameworks backend para APIs enterprise e microsservicos.' },
-            { name: 'Astro', description: 'Geracao de sites estaticos para sites de conteudo com JS minimo.' },
+          ],
+        },
+        {
+          name: 'Filas & Orquestracao',
+          items: [
+            { name: 'RabbitMQ', description: 'Message broker para comunicacao assincrona entre microsservicos.' },
+            { name: 'Apache Kafka', description: 'Plataforma de streaming de eventos para pipelines real-time de alto throughput.' },
+            { name: 'Temporal', description: 'Orquestracao de workflows duraveis para processos de negocio de longa duracao.' },
           ],
         },
         {
@@ -459,6 +477,9 @@ const translations = {
             { name: 'PostgreSQL', description: 'Banco relacional principal. Testado em batalha e confiavel.' },
             { name: 'Redis', description: 'Cache em memoria, session store e backend de filas.' },
             { name: 'MongoDB', description: 'Document store para casos de uso com schema flexivel.' },
+            { name: 'MariaDB', description: 'Banco relacional compativel com MySQL para setups de alta disponibilidade.' },
+            { name: 'Cassandra', description: 'NoSQL wide-column para workloads distribuidos com escrita massiva.' },
+            { name: 'Pinecone / pgvector', description: 'Bancos vetoriais para embeddings de IA, busca semantica e pipelines RAG.' },
           ],
         },
         {
@@ -466,6 +487,7 @@ const translations = {
           items: [
             { name: 'Grafana + Loki', description: 'Dashboards e agregacao de logs para sistemas distribuidos.' },
             { name: 'OpenTelemetry', description: 'Tracing distribuido e coleta de metricas entre servicos.' },
+            { name: 'Datadog', description: 'Monitoramento full-stack, APM e observabilidade de infraestrutura.' },
             { name: 'Sentry', description: 'Rastreamento de erros e monitoramento de performance com source maps.' },
           ],
         },
