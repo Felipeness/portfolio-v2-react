@@ -8,6 +8,8 @@ export interface CaseStudy {
   techs: string[];
   metrics?: { value: string; label: string }[];
   featured: boolean;
+  githubUrl?: string;
+  liveUrl?: string;
   content: {
     context: string;
     challenge: string;
@@ -21,6 +23,8 @@ export const caseStudies: CaseStudy[] = [
   // --- English ---
   {
     slug: 'licitawin',
+    githubUrl: undefined,
+    liveUrl: undefined,
     title: 'LicitaWin — Bidding Intelligence Platform',
     description:
       'Built a real-time bidding intelligence platform processing 50K+ government tenders daily with ML-powered classification and alerting.',
@@ -47,6 +51,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'micro-frontends',
+    githubUrl: 'https://github.com/Felipeness/micro-frontend-nextjs',
+    liveUrl: 'https://micro-frontend-nextjs-host.vercel.app',
     title: 'Micro-frontend Architecture at Scale',
     description:
       'Designed and implemented a micro-frontend architecture serving 200+ developers across 15 autonomous teams with independent deploy cycles.',
@@ -72,6 +78,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'orchestrix',
+    githubUrl: 'https://github.com/Felipeness/orchestrix-api',
     title: 'Orchestrix — Workflow Orchestration Engine',
     description:
       'Built a lightweight workflow orchestration engine handling 1M+ daily executions with saga pattern support and automatic rollback.',
@@ -97,6 +104,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'yamaha-fit-rh',
+    liveUrl: 'https://www.afinidadeatitudeazul.com.br/',
     title: 'Yamaha Fit RH — HR Platform',
     description:
       'Led full-stack development of an HR management platform for Yamaha Motor do Brasil, serving 3,000+ employees with attendance, payroll, and performance modules.',
@@ -122,6 +130,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'appointment-api',
+    githubUrl: 'https://github.com/Felipeness/appointment-api',
     title: 'High-Throughput Appointment API',
     description:
       'Architected a scheduling API handling 100K+ concurrent bookings with optimistic locking, conflict resolution, and multi-timezone support.',
@@ -149,6 +158,8 @@ export const caseStudies: CaseStudy[] = [
   // --- Portuguese ---
   {
     slug: 'licitawin',
+    githubUrl: undefined,
+    liveUrl: undefined,
     title: 'LicitaWin — Plataforma de Inteligencia em Licitacoes',
     description:
       'Construi uma plataforma de inteligencia em licitacoes em tempo real processando 50K+ editais governamentais por dia com classificacao ML e alertas.',
@@ -175,6 +186,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'micro-frontends',
+    githubUrl: 'https://github.com/Felipeness/micro-frontend-nextjs',
+    liveUrl: 'https://micro-frontend-nextjs-host.vercel.app',
     title: 'Arquitetura Micro-frontend em Escala',
     description:
       'Projetei e implementei uma arquitetura micro-frontend servindo 200+ desenvolvedores em 15 times autonomos com ciclos de deploy independentes.',
@@ -200,6 +213,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'orchestrix',
+    githubUrl: 'https://github.com/Felipeness/orchestrix-api',
     title: 'Orchestrix — Motor de Orquestracao de Workflows',
     description:
       'Construi um motor leve de orquestracao de workflows lidando com 1M+ execucoes diarias com suporte ao padrao saga e rollback automatico.',
@@ -225,6 +239,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'yamaha-fit-rh',
+    liveUrl: 'https://www.afinidadeatitudeazul.com.br/',
     title: 'Yamaha Fit RH — Plataforma de RH',
     description:
       'Liderei o desenvolvimento full-stack de uma plataforma de gestao de RH para a Yamaha Motor do Brasil, servindo 3.000+ funcionarios com modulos de ponto, folha e performance.',
@@ -250,6 +265,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'appointment-api',
+    githubUrl: 'https://github.com/Felipeness/appointment-api',
     title: 'API de Agendamento de Alta Vazao',
     description:
       'Arquitetei uma API de agendamento lidando com 100K+ reservas concorrentes com locking otimista, resolucao de conflitos e suporte multi-fuso horario.',
