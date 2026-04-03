@@ -29,7 +29,7 @@ function OssPage() {
         title={translations.sections.oss.title}
         description={translations.sections.oss.description}
       />
-      <OssGrid />
+      <OssGrid locale={locale as Locale} />
     </section>
   );
 }

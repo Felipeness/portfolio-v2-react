@@ -1,30 +1,25 @@
 import { useRef } from 'react';
 import { useCountUp } from '~/shared/animations/useCountUp';
+import type { Locale } from '~/shared/types/locale';
+import { t } from '~/shared/i18n/utils';
 
-interface Metric {
-  value: number;
-  suffix: string;
-  label: string;
+interface ImpactMetricsProps {
+  locale: Locale;
 }
 
-const metrics: Metric[] = [
-  { value: 10, suffix: '+', label: 'Years of Experience' },
-  { value: 200, suffix: '+', label: 'Developers Mentored' },
-  { value: 50, suffix: 'M+', label: 'Users Impacted' },
-  { value: 15, suffix: '+', label: 'Systems Architected' },
-];
+export function ImpactMetrics({ locale }: ImpactMetricsProps) {
+  const translations = t(locale);
 
-export function ImpactMetrics() {
   return (
     <div className="grid grid-cols-2 gap-6">
-      {metrics.map((metric) => (
+      {translations.about.impactMetrics.map((metric) => (
         <MetricCard key={metric.label} metric={metric} />
       ))}
     </div>
   );
 }
 
-function MetricCard({ metric }: { metric: Metric }) {
+function MetricCard({ metric }: { metric: { value: number; suffix: string; label: string } }) {
   const valueRef = useRef<HTMLSpanElement>(null);
   useCountUp(valueRef, metric.value, { suffix: metric.suffix });
 

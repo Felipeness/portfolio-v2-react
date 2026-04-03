@@ -21,7 +21,7 @@ export function RecentWriting({ locale }: RecentWritingProps) {
   });
 
   const recentPosts = [...blogPosts]
-    .filter((p) => p.locale === locale || p.locale === 'en')
+    .filter((p) => p.locale === locale)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 4);
 

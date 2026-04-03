@@ -31,7 +31,7 @@ function BlogPage() {
         title={translations.sections.blog.title}
         description={translations.sections.blog.description}
       />
-      <PostGrid posts={blogPosts} locale={validLocale} />
+      <PostGrid posts={blogPosts.filter((p) => p.locale === validLocale)} locale={validLocale} />
     </section>
   );
 }

@@ -3,13 +3,16 @@ import { Link } from '@tanstack/react-router';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 import type { CaseStudy } from './data';
 import { TechBadge } from '~/shared/components/TechBadge';
+import type { Locale } from '~/shared/types/locale';
+import { t } from '~/shared/i18n/utils';
 
 interface CaseDetailProps {
   study: CaseStudy;
-  locale: string;
+  locale: Locale;
 }
 
 export function CaseDetail({ study, locale }: CaseDetailProps) {
+  const translations = t(locale);
   const headerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +31,7 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
           <line x1="19" y1="12" x2="5" y2="12" />
           <polyline points="12 19 5 12 12 5" />
         </svg>
-        Back to Cases
+        {translations.cases.backToList}
       </Link>
 
       {/* Header */}
@@ -66,19 +69,19 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
       {/* Content */}
       <div ref={contentRef} className="prose">
         <div className="content-section">
-          <h2>Context</h2>
+          <h2>{translations.cases.context}</h2>
           <p>{study.content.context}</p>
         </div>
         <div className="content-section">
-          <h2>Challenge</h2>
+          <h2>{translations.cases.challenge}</h2>
           <p>{study.content.challenge}</p>
         </div>
         <div className="content-section">
-          <h2>Approach</h2>
+          <h2>{translations.cases.approach}</h2>
           <p>{study.content.approach}</p>
         </div>
         <div className="content-section">
-          <h2>Results</h2>
+          <h2>{translations.cases.results}</h2>
           <p>{study.content.results}</p>
         </div>
       </div>
