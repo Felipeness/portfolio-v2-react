@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
+import { TechBadge } from '~/shared/components/TechBadge';
 
 interface OssProject {
   name: string;
@@ -68,7 +69,7 @@ export function OssGrid() {
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="oss-card group block p-6 rounded-2xl bg-bg-surface border border-border-subtle hover:border-border-default transition-all duration-300"
+          className="oss-card group block p-6 rounded-2xl bg-bg-surface border border-border-subtle hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300"
         >
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-heading font-bold text-text-primary group-hover:text-orange transition-colors">
@@ -86,9 +87,9 @@ export function OssGrid() {
           <p className="text-sm text-text-tertiary leading-relaxed mb-4">
             {project.description}
           </p>
-          <span className="inline-block px-2.5 py-1 rounded-md text-xs font-mono bg-bg-elevated border border-border-subtle text-text-muted">
+          <TechBadge variant={project.role === 'Author' ? 'primary' : 'secondary'}>
             {project.role}
-          </span>
+          </TechBadge>
         </a>
       ))}
     </div>

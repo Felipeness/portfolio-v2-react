@@ -5,6 +5,7 @@ import { t } from '~/shared/i18n/utils';
 import { gsap } from '~/shared/animations/gsap-setup';
 import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
 import { caseStudies } from '~/features/cases/data';
+import { TechBadge } from '~/shared/components/TechBadge';
 
 interface FeaturedCasesProps {
   locale: Locale;
@@ -33,34 +34,40 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
         '.h-scroll-track',
       ) as HTMLElement;
       if (!track) return;
-      const scrollWidth = track.scrollWidth - window.innerWidth;
+
+      const getScrollWidth = () => track.scrollWidth - window.innerWidth;
 
       gsap.to(track, {
-        x: -scrollWidth,
+        x: () => -getScrollWidth(),
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
           start: 'top top',
-          end: () => `+=${scrollWidth}`,
-          scrub: 1,
+          end: () => `+=${getScrollWidth()}`,
+          scrub: 0.8,
           invalidateOnRefresh: true,
           anticipatePin: 1,
+          snap: {
+            snapTo: 1 / topCases.length,
+            duration: { min: 0.2, max: 0.4 },
+            ease: 'power1.inOut',
+          },
         },
       });
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [topCases.length]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-bg-base overflow-hidden"
+      className="relative z-10 bg-bg-base overflow-hidden min-h-screen"
     >
-      <div className="h-scroll-track flex items-center gap-8 will-change-transform">
+      <div className="h-scroll-track flex items-center gap-8 px-8 will-change-transform h-screen">
         {/* Leading spacer with title */}
-        <div className="flex-shrink-0 w-[70vw] md:w-[40vw] flex items-center justify-center px-8">
+        <div className="flex-shrink-0 w-[80vw] md:w-[40vw] flex items-center justify-center px-8">
           <div>
             <span className="section-tag mb-4 inline-flex">
               {translations.sections.cases.tag}
@@ -77,7 +84,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
             key={study.slug}
             to="/$locale/cases/$slug"
             params={{ locale, slug: study.slug }}
-            className={`group flex-shrink-0 w-[70vw] md:w-[40vw] rounded-3xl bg-gradient-to-br ${cardGradients[i]} border border-border-subtle p-8 md:p-12 flex flex-col justify-between min-h-[60vh] hover:border-border-default transition-colors`}
+            className={`group flex-shrink-0 w-[80vw] md:w-[45vw] rounded-3xl bg-gradient-to-br ${cardGradients[i]} border border-border-subtle p-8 md:p-12 flex flex-col justify-between max-h-[70vh] hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] transition-all duration-300`}
           >
             <div>
               <span className="section-tag mb-6 inline-flex">{study.tag}</span>
@@ -92,12 +99,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
             <div>
               <div className="flex flex-wrap gap-2 mb-6">
                 {study.techs.slice(0, 5).map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg text-xs font-mono bg-bg-base/50 border border-border-subtle text-text-muted"
-                  >
-                    {tech}
-                  </span>
+                  <TechBadge key={tech}>{tech}</TechBadge>
                 ))}
               </div>
               <span className="text-sm font-medium text-orange group-hover:underline">
@@ -108,7 +110,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
         ))}
 
         {/* Trailing spacer */}
-        <div className="flex-shrink-0 w-[20vw]" />
+        <div className="flex-shrink-0 w-[10vw]" />
       </div>
     </section>
   );

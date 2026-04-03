@@ -1,5 +1,5 @@
-import { useState, useRef, useLayoutEffect } from 'react';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { Link, useRouterState } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
 import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
@@ -33,9 +33,15 @@ const navLinks: { key: keyof ReturnType<typeof t>['nav']; route: NavRoute }[] = 
 export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const translations = t(locale);
-  const navigate = useNavigate();
   const headerRef = useRef<HTMLElement>(null);
+  const locationPath = useRouterState({ select: (s) => s.location.pathname });
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [locationPath]);
+
+  // Hide header on scroll down, show on scroll up
   useLayoutEffect(() => {
     if (typeof window === 'undefined' || !headerRef.current) return;
 
@@ -44,10 +50,7 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
         start: 'top -80',
         end: 99999,
         onUpdate: (self) => {
-          const direction = self.direction;
-          const scrollY = window.scrollY;
-
-          if (direction === 1 && scrollY > 100) {
+          if (self.direction === 1 && window.scrollY > 100) {
             gsap.to(headerRef.current, { y: '-100%', duration: 0.3, ease: 'power2.out' });
           } else {
             gsap.to(headerRef.current, { y: '0%', duration: 0.3, ease: 'power2.out' });

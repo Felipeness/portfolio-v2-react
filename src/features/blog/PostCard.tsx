@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import type { BlogPost } from './data';
+import { TechBadge } from '~/shared/components/TechBadge';
 
 interface PostCardProps {
   post: BlogPost;
@@ -11,7 +12,7 @@ export function PostCard({ post, locale }: PostCardProps) {
     <Link
       to="/$locale/blog/$slug"
       params={{ locale, slug: post.slug }}
-      className="group block rounded-2xl bg-bg-surface border border-border-subtle hover:border-border-default transition-all duration-300 overflow-hidden"
+      className="group block rounded-2xl bg-bg-surface border border-border-subtle hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
     >
       <div className="p-6">
         {/* Date + Reading Time */}
@@ -40,12 +41,7 @@ export function PostCard({ post, locale }: PostCardProps) {
         {/* Tags */}
         <div className="flex flex-wrap gap-2">
           {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2.5 py-1 rounded-md text-xs font-mono bg-bg-elevated border border-border-subtle text-text-muted"
-            >
-              {tag}
-            </span>
+            <TechBadge key={tag} variant="secondary">{tag}</TechBadge>
           ))}
         </div>
       </div>

@@ -61,7 +61,7 @@ export function UsesGrid() {
             {category.items.map((item) => (
               <div
                 key={item.name}
-                className="p-4 rounded-xl bg-bg-surface border border-border-subtle hover:border-border-default transition-colors"
+                className="p-4 rounded-xl bg-bg-surface border border-border-subtle hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300"
               >
                 <h4 className="font-medium text-text-primary mb-1">{item.name}</h4>
                 <p className="text-sm text-text-tertiary">{item.description}</p>

@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 import type { CaseStudy } from './data';
+import { TechBadge } from '~/shared/components/TechBadge';
 
 interface CaseDetailProps {
   study: CaseStudy;
@@ -16,7 +17,7 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
   useScrollReveal(contentRef, { y: 30, stagger: 0.15, childSelector: '.content-section' });
 
   return (
-    <article className="max-w-4xl mx-auto px-6 py-24">
+    <article className="max-w-4xl mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32">
       {/* Back link */}
       <Link
         to="/$locale/cases"
@@ -43,12 +44,7 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
         {/* Tech badges */}
         <div className="flex flex-wrap gap-2 mb-8">
           {study.techs.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1.5 rounded-md text-xs font-mono bg-bg-surface border border-border-subtle text-text-muted"
-            >
-              {tech}
-            </span>
+            <TechBadge key={tech}>{tech}</TechBadge>
           ))}
         </div>
 
