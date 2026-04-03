@@ -5,6 +5,16 @@ import { SectionHeader } from '~/shared/components/SectionHeader';
 import { OssGrid } from '~/features/oss/OssGrid';
 
 export const Route = createFileRoute('/$locale/oss')({
+  head: () => ({
+    meta: [
+      { title: 'Open Source Contributions | Felipe Soares' },
+      {
+        name: 'description',
+        content:
+          'Open source contributions to Node.js, React, and the broader ecosystem. Contributing to the tools we all depend on.',
+      },
+    ],
+  }),
   component: OssPage,
 });
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createFileRoute, Outlet, redirect, useMatches } from '@tanstack/react-router';
+import { createFileRoute, Outlet, redirect, useLocation, useMatches } from '@tanstack/react-router';
 import { isValidLocale } from '~/shared/types/locale';
 import type { Locale } from '~/shared/types/locale';
 import { Header } from '~/shared/components/Header';
@@ -21,12 +21,18 @@ function LocaleLayout() {
   const { locale } = Route.useParams();
   const validLocale = locale as Locale;
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const pathname = useLocation({ select: (l) => l.pathname });
   const matches = useMatches();
   const routeKey = matches[matches.length - 1]?.id ?? '';
 
   useEffect(() => {
     document.documentElement.lang = validLocale === 'pt-br' ? 'pt-BR' : 'en';
   }, [validLocale]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.getElementById('main-content')?.focus();
+  }, [pathname]);
 
   return (
     <>
@@ -36,7 +42,7 @@ function LocaleLayout() {
         locale={validLocale}
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}
       />
-      <main key={routeKey} className="page-transition">
+      <main id="main-content" key={routeKey} tabIndex={-1} className="page-transition outline-none">
         <Outlet />
       </main>
       <Footer locale={validLocale} />

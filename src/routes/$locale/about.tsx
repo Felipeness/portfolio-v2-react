@@ -5,6 +5,16 @@ import { SectionHeader } from '~/shared/components/SectionHeader';
 import { AboutContent } from '~/features/about/AboutContent';
 
 export const Route = createFileRoute('/$locale/about')({
+  head: () => ({
+    meta: [
+      { title: 'About | Felipe Soares' },
+      {
+        name: 'description',
+        content:
+          'The journey from curious developer to Staff Engineer & Solution Architect. 10+ years building distributed systems, platforms, and engineering cultures.',
+      },
+    ],
+  }),
   component: AboutPage,
 });
 

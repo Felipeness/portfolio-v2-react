@@ -6,6 +6,16 @@ import { CaseGrid } from '~/features/cases/CaseGrid';
 import { caseStudies } from '~/features/cases/data';
 
 export const Route = createFileRoute('/$locale/cases/')({
+  head: () => ({
+    meta: [
+      { title: 'Case Studies | Felipe Soares' },
+      {
+        name: 'description',
+        content:
+          'Technical case studies on distributed systems, platform engineering, and architecture. Real-world problems, trade-offs, and measurable outcomes.',
+      },
+    ],
+  }),
   component: CasesPage,
 });
 

@@ -6,6 +6,16 @@ import { PostGrid } from '~/features/blog/PostGrid';
 import { blogPosts } from '~/features/blog/data';
 
 export const Route = createFileRoute('/$locale/blog/')({
+  head: () => ({
+    meta: [
+      { title: 'Blog | Felipe Soares' },
+      {
+        name: 'description',
+        content:
+          'Articles on software architecture, distributed systems, TypeScript, Go, and engineering culture by Felipe Soares.',
+      },
+    ],
+  }),
   component: BlogPage,
 });
 

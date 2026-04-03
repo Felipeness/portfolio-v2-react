@@ -6,6 +6,18 @@ import { getPostBySlug } from '~/features/blog/data';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 
 export const Route = createFileRoute('/$locale/blog/$slug')({
+  head: ({ params }) => {
+    const post = getPostBySlug(params.slug);
+    return {
+      meta: [
+        { title: post ? `${post.title} | Felipe Soares` : 'Blog Post | Felipe Soares' },
+        {
+          name: 'description',
+          content: post?.description ?? 'A blog post by Felipe Soares.',
+        },
+      ],
+    };
+  },
   component: BlogDetailPage,
 });
 

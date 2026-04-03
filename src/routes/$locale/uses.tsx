@@ -5,6 +5,16 @@ import { SectionHeader } from '~/shared/components/SectionHeader';
 import { UsesGrid } from '~/features/uses/UsesGrid';
 
 export const Route = createFileRoute('/$locale/uses')({
+  head: () => ({
+    meta: [
+      { title: 'Uses | Felipe Soares' },
+      {
+        name: 'description',
+        content:
+          'Tools, hardware, and software I use daily for development, architecture, and productivity.',
+      },
+    ],
+  }),
   component: UsesPage,
 });
 
