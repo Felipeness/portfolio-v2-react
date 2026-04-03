@@ -9,11 +9,12 @@ export const Route = createFileRoute('/$locale/cases/$slug')({
 
 function CaseDetailPage() {
   const { locale, slug } = Route.useParams();
-  const study = getCaseBySlug(slug);
+  const validLocale = locale as Locale;
+  const study = getCaseBySlug(slug, validLocale);
 
   if (!study) {
     throw notFound();
   }
 
-  return <CaseDetail study={study} locale={locale as Locale} />;
+  return <CaseDetail study={study} locale={validLocale} />;
 }

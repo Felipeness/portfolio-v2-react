@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from '@tanstack/react-router';
 import { useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
+import { t } from '~/shared/i18n/utils';
 import { getPostBySlug } from '~/features/blog/data';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 
@@ -11,7 +12,9 @@ export const Route = createFileRoute('/$locale/blog/$slug')({
 
 function BlogDetailPage() {
   const { locale, slug } = Route.useParams();
-  const post = getPostBySlug(slug);
+  const validLocale = locale as Locale;
+  const translations = t(validLocale);
+  const post = getPostBySlug(slug, validLocale);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useScrollReveal(contentRef, { y: 20 });
@@ -32,18 +35,21 @@ function BlogDetailPage() {
           <line x1="19" y1="12" x2="5" y2="12" />
           <polyline points="12 19 5 12 12 5" />
         </svg>
-        Back to Blog
+        {translations.blog.backToList}
       </Link>
 
       {/* Header */}
       <header className="mb-12">
         <div className="flex items-center gap-3 text-xs text-text-muted font-mono mb-4">
           <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+            {new Date(post.date).toLocaleDateString(
+              validLocale === 'pt-br' ? 'pt-BR' : 'en-US',
+              {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              },
+            )}
           </time>
           <span className="w-1 h-1 rounded-full bg-text-muted" />
           <span>{post.readingTime}</span>

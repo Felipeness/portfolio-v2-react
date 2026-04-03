@@ -21,7 +21,7 @@ function CasesPage() {
         title={translations.sections.cases.title}
         description={translations.sections.cases.description}
       />
-      <CaseGrid cases={caseStudies} locale={validLocale} />
+      <CaseGrid cases={caseStudies.filter((c) => c.locale === validLocale)} locale={validLocale} />
     </section>
   );
 }

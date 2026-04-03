@@ -1,7 +1,14 @@
 import { useState, useRef } from 'react';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
+import type { Locale } from '~/shared/types/locale';
+import { t } from '~/shared/i18n/utils';
 
-export function ContactForm() {
+interface ContactFormProps {
+  locale: Locale;
+}
+
+export function ContactForm({ locale }: ContactFormProps) {
+  const translations = t(locale);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -11,8 +18,8 @@ export function ContactForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    const subject = encodeURIComponent(`${translations.contact.subjectPrefix} ${name}`);
+    const body = encodeURIComponent(`${translations.contact.nameLabel}: ${name}\n${translations.contact.emailLabel}: ${email}\n\n${message}`);
     window.location.href = `mailto:felipe@felipeness.dev?subject=${subject}&body=${body}`;
   }
 
@@ -24,7 +31,7 @@ export function ContactForm() {
     >
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
-          Name
+          {translations.contact.nameLabel}
         </label>
         <input
           id="name"
@@ -33,13 +40,13 @@ export function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full px-4 py-3 rounded-xl bg-bg-surface border border-border-subtle text-text-primary placeholder:text-text-muted focus:border-orange focus:outline-none transition-colors"
-          placeholder="Your name"
+          placeholder={translations.contact.namePlaceholder}
         />
       </div>
 
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
-          Email
+          {translations.contact.emailLabel}
         </label>
         <input
           id="email"
@@ -48,13 +55,13 @@ export function ContactForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full px-4 py-3 rounded-xl bg-bg-surface border border-border-subtle text-text-primary placeholder:text-text-muted focus:border-orange focus:outline-none transition-colors"
-          placeholder="your@email.com"
+          placeholder={translations.contact.emailPlaceholder}
         />
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
-          Message
+          {translations.contact.messageLabel}
         </label>
         <textarea
           id="message"
@@ -63,7 +70,7 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="w-full px-4 py-3 rounded-xl bg-bg-surface border border-border-subtle text-text-primary placeholder:text-text-muted focus:border-orange focus:outline-none transition-colors resize-none"
-          placeholder="What would you like to discuss?"
+          placeholder={translations.contact.messagePlaceholder}
         />
       </div>
 
@@ -71,7 +78,7 @@ export function ContactForm() {
         type="submit"
         className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20"
       >
-        Send Message
+        {translations.contact.sendButton}
       </button>
     </form>
   );

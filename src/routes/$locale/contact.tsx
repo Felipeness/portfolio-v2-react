@@ -19,7 +19,7 @@ function ContactPage() {
         title={translations.sections.contact.title}
         description={translations.sections.contact.description}
       />
-      <ContactForm />
+      <ContactForm locale={locale as Locale} />
     </section>
   );
 }

@@ -1,58 +1,20 @@
 import { useRef } from 'react';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
+import type { Locale } from '~/shared/types/locale';
+import { t } from '~/shared/i18n/utils';
 
-interface UsesCategory {
-  name: string;
-  items: { name: string; description: string }[];
+interface UsesGridProps {
+  locale: Locale;
 }
 
-const categories: UsesCategory[] = [
-  {
-    name: 'Editor & Terminal',
-    items: [
-      { name: 'Cursor', description: 'AI-powered IDE built on VS Code. My daily driver.' },
-      { name: 'Claude Code', description: 'AI coding assistant for complex tasks.' },
-      { name: 'Warp', description: 'Modern terminal with AI integration.' },
-      { name: 'Zsh + Oh My Zsh', description: 'Shell with plugins for productivity.' },
-    ],
-  },
-  {
-    name: 'Development',
-    items: [
-      { name: 'TypeScript', description: 'Primary language for backend and frontend.' },
-      { name: 'Go', description: 'For performance-critical services and CLI tools.' },
-      { name: 'React + Next.js', description: 'Frontend framework of choice.' },
-      { name: 'NestJS', description: 'Backend framework for enterprise APIs.' },
-      { name: 'Docker + K8s', description: 'Containerization and orchestration.' },
-    ],
-  },
-  {
-    name: 'Productivity',
-    items: [
-      { name: 'Linear', description: 'Project management that respects developers.' },
-      { name: 'Notion', description: 'Knowledge base and documentation.' },
-      { name: 'Excalidraw', description: 'Architecture diagrams and whiteboarding.' },
-      { name: 'Raycast', description: 'Launcher and productivity tool for macOS.' },
-    ],
-  },
-  {
-    name: 'Hardware',
-    items: [
-      { name: 'MacBook Pro M3 Max', description: '64GB RAM — handles everything I throw at it.' },
-      { name: 'LG 5K UltraFine', description: 'Primary display for focused work.' },
-      { name: 'Keychron Q1 Pro', description: 'Mechanical keyboard with Gateron Browns.' },
-      { name: 'Sony WH-1000XM5', description: 'Noise-cancelling for deep focus sessions.' },
-    ],
-  },
-];
-
-export function UsesGrid() {
+export function UsesGrid({ locale }: UsesGridProps) {
+  const translations = t(locale);
   const ref = useRef<HTMLDivElement>(null);
   useScrollReveal(ref, { childSelector: '.uses-category', stagger: 0.15 });
 
   return (
     <div ref={ref} className="space-y-16">
-      {categories.map((category) => (
+      {translations.uses.categories.map((category) => (
         <div key={category.name} className="uses-category">
           <h3 className="font-heading text-xl font-bold text-text-primary mb-6">
             {category.name}

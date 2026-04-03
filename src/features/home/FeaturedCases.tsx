@@ -20,7 +20,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
   const topCases = caseStudies
-    .filter((c) => c.locale === locale || c.locale === 'en')
+    .filter((c) => c.locale === locale)
     .slice(0, 3);
 
   useLayoutEffect(() => {
@@ -100,7 +100,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
                 ))}
               </div>
               <span className="text-sm font-medium text-orange group-hover:underline">
-                View case &rarr;
+                {translations.cases.viewCase}
               </span>
             </div>
           </Link>

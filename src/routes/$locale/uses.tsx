@@ -19,7 +19,7 @@ function UsesPage() {
         title={translations.sections.uses.title}
         description={translations.sections.uses.description}
       />
-      <UsesGrid />
+      <UsesGrid locale={locale as Locale} />
     </section>
   );
 }

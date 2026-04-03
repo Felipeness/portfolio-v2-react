@@ -19,7 +19,7 @@ function AboutPage() {
         title={translations.sections.about.title}
         description={translations.sections.about.description}
       />
-      <AboutContent />
+      <AboutContent locale={locale as Locale} />
     </section>
   );
 }

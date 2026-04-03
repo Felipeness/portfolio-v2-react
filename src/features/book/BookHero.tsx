@@ -52,14 +52,14 @@ export function BookHero({ locale }: BookHeroProps) {
           <div className="absolute inset-0 bg-gradient-to-br from-orange via-brand-red to-brand-blue rounded-2xl flex items-center justify-center p-8">
             <div className="text-center">
               <h3 className="font-heading text-3xl font-bold text-white mb-4">
-                The Whole and the Part
+                {translations.book.coverTitle}
               </h3>
               <div className="w-16 h-[2px] bg-white/40 mx-auto mb-4" />
               <p className="text-white/80 text-sm font-body">
-                Felipe Soares
+                {translations.book.coverAuthor}
               </p>
               <p className="text-white/60 text-xs font-mono mt-2">
-                Holonomic Architecture
+                {translations.book.coverSubtitle}
               </p>
             </div>
           </div>
@@ -76,24 +76,14 @@ export function BookHero({ locale }: BookHeroProps) {
           </p>
 
           <div className="space-y-4 mb-8">
-            <div className="flex items-start gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-orange mt-2 shrink-0" />
-              <p className="text-text-secondary">
-                How Arthur Koestler's holon theory applies to software systems
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-orange mt-2 shrink-0" />
-              <p className="text-text-secondary">
-                Self-Contained Systems as the natural unit of software delivery
-              </p>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-orange mt-2 shrink-0" />
-              <p className="text-text-secondary">
-                Practical patterns for teams building platforms that evolve
-              </p>
-            </div>
+            {translations.book.bulletPoints.map((point, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange mt-2 shrink-0" />
+                <p className="text-text-secondary">
+                  {point}
+                </p>
+              </div>
+            ))}
           </div>
 
           <a
@@ -102,7 +92,7 @@ export function BookHero({ locale }: BookHeroProps) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors"
           >
-            Read More
+            {translations.book.readMore}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
