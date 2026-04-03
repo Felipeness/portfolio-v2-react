@@ -177,6 +177,7 @@ export function Hero({ locale }: HeroProps) {
       <div
         ref={scrollIndicatorRef}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+        aria-hidden="true"
       >
         <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-orange to-transparent animate-pulse" />
         <span className="text-[10px] font-mono tracking-[0.3em] text-text-muted rotate-0">

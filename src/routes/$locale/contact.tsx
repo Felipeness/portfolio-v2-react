@@ -5,6 +5,16 @@ import { SectionHeader } from '~/shared/components/SectionHeader';
 import { ContactForm } from '~/features/contact/ContactForm';
 
 export const Route = createFileRoute('/$locale/contact')({
+  head: () => ({
+    meta: [
+      { title: 'Contact | Felipe Soares' },
+      {
+        name: 'description',
+        content:
+          "Get in touch with Felipe Soares. Let's build something meaningful together.",
+      },
+    ],
+  }),
   component: ContactPage,
 });
 

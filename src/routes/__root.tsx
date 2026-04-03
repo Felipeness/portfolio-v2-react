@@ -26,10 +26,14 @@ export const Route = createRootRoute({
         content: 'Building systems that scale with purpose. 10+ years of distributed systems, developer platforms, and engineering culture.',
       },
       { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://felipeness.dev' },
+      { property: 'og:image', content: 'https://felipeness.dev/og-default.png' },
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      { rel: 'canonical', href: 'https://felipeness.dev' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       {

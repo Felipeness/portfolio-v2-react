@@ -36,6 +36,12 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle backdrop-blur-xl bg-bg-base/80">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-orange focus:text-black focus:rounded-lg"
+      >
+        Skip to content
+      </a>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/$locale" params={{ locale }} className="flex items-center gap-2">
@@ -79,7 +85,8 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
           <button
             className="md:hidden p-2 rounded-lg hover:bg-bg-surface transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               {mobileOpen ? (

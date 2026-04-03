@@ -9,6 +9,16 @@ import { RecentWriting } from '~/features/home/RecentWriting';
 import { ContactCTA } from '~/features/home/ContactCTA';
 
 export const Route = createFileRoute('/$locale/')({
+  head: () => ({
+    meta: [
+      { title: 'Felipe Soares | Staff Engineer & Solution Architect' },
+      {
+        name: 'description',
+        content:
+          'Portfolio of Felipe Soares — building high-impact distributed systems, developer platforms, and engineering cultures with 10+ years of experience.',
+      },
+    ],
+  }),
   component: HomePage,
 });
 
