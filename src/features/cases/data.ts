@@ -160,9 +160,9 @@ export const caseStudies: CaseStudy[] = [
     slug: 'licitawin',
     githubUrl: undefined,
     liveUrl: undefined,
-    title: 'LicitaWin — Plataforma de Inteligencia em Licitacoes',
+    title: 'LicitaWin — Plataforma de Inteligência em Licitações',
     description:
-      'Construi uma plataforma de inteligencia em licitacoes em tempo real processando 50K+ editais governamentais por dia com classificacao ML e alertas.',
+      'Construí uma plataforma de inteligência em licitações em tempo real processando 50K+ editais governamentais por dia com classificação ML e alertas.',
     tag: 'Engenharia de Plataforma',
     techs: ['Node.js', 'TypeScript', 'PostgreSQL', 'Redis', 'ElasticSearch', 'React', 'AWS'],
     metrics: [
@@ -174,13 +174,13 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     content: {
       context:
-        'Licitacoes governamentais no Brasil representam um mercado de R$1T+ com milhares de editais publicados diariamente em centenas de portais. Empresas precisam de inteligencia em tempo real para encontrar oportunidades relevantes antes dos prazos.',
+        'Licitações governamentais no Brasil representam um mercado de R$1T+ com milhares de editais publicados diariamente em centenas de portais. Empresas precisam de inteligência em tempo real para encontrar oportunidades relevantes antes dos prazos.',
       challenge:
-        'O sistema existente era uma aplicacao monolitica em Ruby que processava apenas ~5K editais/dia com downtime frequente. A qualidade dos dados era ruim devido a scraping inconsistente, e o time nao tinha observabilidade no pipeline.',
+        'O sistema existente era uma aplicação monolítica em Ruby que processava apenas ~5K editais/dia com downtime frequente. A qualidade dos dados era ruim devido a scraping inconsistente, e o time não tinha observabilidade no pipeline.',
       approach:
-        'Projetei uma arquitetura event-driven distribuida com microsservicos especializados para scraping, classificacao, deduplicacao e alertas. Implementei CQRS com modelos separados de leitura/escrita, ElasticSearch para busca full-text e Redis para cache de dados quentes. Construi um dashboard de monitoramento com Grafana para saude do pipeline.',
+        'Projetei uma arquitetura event-driven distribuída com microsserviços especializados para scraping, classificação, deduplicação e alertas. Implementei CQRS com modelos separados de leitura/escrita, ElasticSearch para busca full-text e Redis para cache de dados quentes. Construí um dashboard de monitoramento com Grafana para saúde do pipeline.',
       results:
-        'Alcancamos aumento de 10x no throughput (50K+ editais/dia), reducao da latencia P95 da API para menos de 200ms e manutencao de 99.9% de uptime por 18 meses. A melhoria na qualidade dos dados e alertas em tempo real impulsionaram 3x de crescimento de receita na linha de produtos de licitacao.',
+        'Alcançamos aumento de 10x no throughput (50K+ editais/dia), redução da latência P95 da API para menos de 200ms e manutenção de 99.9% de uptime por 18 meses. A melhoria na qualidade dos dados e alertas em tempo real impulsionaram 3x de crescimento de receita na linha de produtos de licitação.',
     },
     locale: 'pt-br',
   },
@@ -190,50 +190,50 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://micro-frontend-nextjs-host.vercel.app',
     title: 'Arquitetura Micro-frontend em Escala',
     description:
-      'Projetei e implementei uma arquitetura micro-frontend servindo 200+ desenvolvedores em 15 times autonomos com ciclos de deploy independentes.',
+      'Projetei e implementei uma arquitetura micro-frontend servindo 200+ desenvolvedores em 15 times autônomos com ciclos de deploy independentes.',
     tag: 'Arquitetura',
     techs: ['React', 'Module Federation', 'TypeScript', 'NestJS', 'Webpack 5', 'CDN'],
     metrics: [
       { value: '200+', label: 'Desenvolvedores' },
       { value: '15', label: 'Times' },
-      { value: '40%', label: 'Deploys mais rapidos' },
+      { value: '40%', label: 'Deploys mais rápidos' },
     ],
     featured: false,
     content: {
       context:
-        'Uma grande plataforma SaaS com 200+ desenvolvedores frontend precisava se libertar de uma aplicacao React monolitica que se tornara um gargalo para a autonomia dos times e velocidade de deploy.',
+        'Uma grande plataforma SaaS com 200+ desenvolvedores frontend precisava se libertar de uma aplicação React monolítica que se tornara um gargalo para a autonomia dos times e velocidade de deploy.',
       challenge:
-        'Times estavam bloqueados por conflitos de merge, bugs de estado compartilhado e um pipeline de build de 45 minutos. Todo deploy exigia coordenacao entre multiplos times, criando um gargalo de release mensal.',
+        'Times estavam bloqueados por conflitos de merge, bugs de estado compartilhado e um pipeline de build de 45 minutos. Todo deploy exigia coordenação entre múltiplos times, criando um gargalo de release mensal.',
       approach:
-        'Implementei Webpack 5 Module Federation com uma aplicacao shell e micro-frontends autonomos por dominio. Criei um design system compartilhado como modulo federado, estabeleci contratos para comunicacao entre apps e construi uma CLI para scaffolding de novos micro-frontends.',
+        'Implementei Webpack 5 Module Federation com uma aplicação shell e micro-frontends autônomos por domínio. Criei um design system compartilhado como módulo federado, estabeleci contratos para comunicação entre apps e construí uma CLI para scaffolding de novos micro-frontends.',
       results:
-        'Frequencia de deploy aumentou de mensal para multiplas vezes por dia por time. Tempos de build cairam de 45 minutos para menos de 5 minutos por micro-frontend. Times ganharam total autonomia sobre suas escolhas tecnologicas dentro dos contratos estabelecidos.',
+        'Frequência de deploy aumentou de mensal para múltiplas vezes por dia por time. Tempos de build caíram de 45 minutos para menos de 5 minutos por micro-frontend. Times ganharam total autonomia sobre suas escolhas tecnológicas dentro dos contratos estabelecidos.',
     },
     locale: 'pt-br',
   },
   {
     slug: 'orchestrix',
     githubUrl: 'https://github.com/Felipeness/orchestrix-api',
-    title: 'Orchestrix — Motor de Orquestracao de Workflows',
+    title: 'Orchestrix — Motor de Orquestração de Workflows',
     description:
-      'Construi um motor leve de orquestracao de workflows lidando com 1M+ execucoes diarias com suporte ao padrao saga e rollback automatico.',
+      'Construí um motor leve de orquestração de workflows lidando com 1M+ execuções diárias com suporte ao padrão saga e rollback automático.',
     tag: 'Design de Sistemas',
     techs: ['Go', 'gRPC', 'PostgreSQL', 'Redis', 'Kafka', 'Kubernetes'],
     metrics: [
-      { value: '1M+', label: 'Execucoes diarias' },
-      { value: '< 50ms', label: 'Orquestracao P99' },
+      { value: '1M+', label: 'Execuções diárias' },
+      { value: '< 50ms', label: 'Orquestração P99' },
       { value: '0', label: 'Eventos de perda de dados' },
     ],
     featured: false,
     content: {
       context:
-        'Uma plataforma fintech precisava de orquestracao confiavel para transacoes financeiras complexas envolvendo APIs bancarias externas, deteccao de fraude e checagens de compliance.',
+        'Uma plataforma fintech precisava de orquestração confiável para transações financeiras complexas envolvendo APIs bancárias externas, detecção de fraude e checagens de compliance.',
       challenge:
-        'A abordagem existente usava coreografia ad-hoc com filas de mensagens, levando a transacoes orfas, estado inconsistente e dificuldade de debugging em workflows falhados atraves de 12+ microsservicos.',
+        'A abordagem existente usava coreografia ad-hoc com filas de mensagens, levando a transações órfãs, estado inconsistente e dificuldade de debugging em workflows falhados através de 12+ microsserviços.',
       approach:
-        'Projetei o Orchestrix como um motor de orquestracao central implementando o padrao saga com transacoes compensatorias. Usei Go para performance, gRPC para comunicacao entre servicos e Kafka para logging duravel de eventos. Construi um designer visual de workflow e monitor de execucao em tempo real.',
+        'Projetei o Orchestrix como um motor de orquestração central implementando o padrão saga com transações compensatórias. Usei Go para performance, gRPC para comunicação entre serviços e Kafka para logging durável de eventos. Construí um designer visual de workflow e monitor de execução em tempo real.',
       results:
-        'Zero eventos de perda de dados desde o lancamento. Latencia P99 de orquestracao abaixo de 50ms. Reduzi o tempo de resposta a incidentes de horas para minutos com o monitor de execucao. O padrao saga eliminou transacoes orfas completamente.',
+        'Zero eventos de perda de dados desde o lançamento. Latência P99 de orquestração abaixo de 50ms. Reduzi o tempo de resposta a incidentes de horas para minutos com o monitor de execução. O padrão saga eliminou transações órfãs completamente.',
     },
     locale: 'pt-br',
   },
@@ -242,50 +242,50 @@ export const caseStudies: CaseStudy[] = [
     liveUrl: 'https://www.afinidadeatitudeazul.com.br/',
     title: 'Yamaha Fit RH — Plataforma de RH',
     description:
-      'Liderei o desenvolvimento full-stack de uma plataforma de gestao de RH para a Yamaha Motor do Brasil, servindo 3.000+ funcionarios com modulos de ponto, folha e performance.',
+      'Liderei o desenvolvimento full-stack de uma plataforma de gestão de RH para a Yamaha Motor do Brasil, servindo 3.000+ funcionários com módulos de ponto, folha e performance.',
     tag: 'Full-Stack',
     techs: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Azure'],
     metrics: [
-      { value: '3K+', label: 'Funcionarios' },
-      { value: '70%', label: 'Automacao de processos' },
-      { value: '5', label: 'Modulos entregues' },
+      { value: '3K+', label: 'Funcionários' },
+      { value: '70%', label: 'Automação de processos' },
+      { value: '5', label: 'Módulos entregues' },
     ],
     featured: false,
     content: {
       context:
-        'A Yamaha Motor do Brasil precisava de uma plataforma de RH customizada para substituir multiplos processos desconectados baseados em planilhas para controle de ponto, folha de pagamento, avaliacoes de performance e gestao de beneficios.',
+        'A Yamaha Motor do Brasil precisava de uma plataforma de RH customizada para substituir múltiplos processos desconectados baseados em planilhas para controle de ponto, folha de pagamento, avaliações de performance e gestão de benefícios.',
       challenge:
-        'Processos de RH eram manuais, propensos a erros e espalhados em arquivos Excel compartilhados por email. Calculos de folha tinham erros frequentes e gestores nao tinham visibilidade nos padroes de frequencia do time.',
+        'Processos de RH eram manuais, propensos a erros e espalhados em arquivos Excel compartilhados por email. Cálculos de folha tinham erros frequentes e gestores não tinham visibilidade nos padrões de frequência do time.',
       approach:
-        'Construi uma plataforma modular com frontend React e backend NestJS. Implementei controle de ponto em tempo real integrado com hardware biometrico, calculos automatizados de folha com trilhas de auditoria e um workflow de avaliacao de performance com feedback 360 graus.',
+        'Construí uma plataforma modular com frontend React e backend NestJS. Implementei controle de ponto em tempo real integrado com hardware biométrico, cálculos automatizados de folha com trilhas de auditoria e um workflow de avaliação de performance com feedback 360 graus.',
       results:
-        'Automatizamos 70% dos processos manuais de RH. Eliminamos erros de calculo de folha. Entregamos 5 modulos integrados (ponto, folha, performance, beneficios, recrutamento) servindo 3.000+ funcionarios.',
+        'Automatizamos 70% dos processos manuais de RH. Eliminamos erros de cálculo de folha. Entregamos 5 módulos integrados (ponto, folha, performance, benefícios, recrutamento) servindo 3.000+ funcionários.',
     },
     locale: 'pt-br',
   },
   {
     slug: 'appointment-api',
     githubUrl: 'https://github.com/Felipeness/appointment-api',
-    title: 'API de Agendamento de Alta Vazao',
+    title: 'API de Agendamento de Alta Vazão',
     description:
-      'Arquitetei uma API de agendamento lidando com 100K+ reservas concorrentes com locking otimista, resolucao de conflitos e suporte multi-fuso horario.',
+      'Arquitetei uma API de agendamento lidando com 100K+ reservas concorrentes com locking otimista, resolução de conflitos e suporte multi-fuso horário.',
     tag: 'Design de API',
     techs: ['NestJS', 'TypeScript', 'PostgreSQL', 'Redis', 'Bull', 'AWS Lambda'],
     metrics: [
       { value: '100K+', label: 'Reservas concorrentes' },
       { value: '< 100ms', label: 'Reserva P95' },
-      { value: '99.99%', label: 'Consistencia' },
+      { value: '99.99%', label: 'Consistência' },
     ],
     featured: false,
     content: {
       context:
-        'Uma plataforma SaaS de saude precisava de um sistema de agendamento que pudesse lidar com picos de carga durante periodos de matricula aberta, mantendo consistencia estrita para slots de consulta.',
+        'Uma plataforma SaaS de saúde precisava de um sistema de agendamento que pudesse lidar com picos de carga durante períodos de matrícula aberta, mantendo consistência estrita para slots de consulta.',
       challenge:
-        'O sistema existente usava locking pessimista, causando timeouts durante picos de carga. Double-bookings ocorriam durante race conditions, e o tratamento de fuso horario era inconsistente entre regioes.',
+        'O sistema existente usava locking pessimista, causando timeouts durante picos de carga. Double-bookings ocorriam durante race conditions, e o tratamento de fuso horário era inconsistente entre regiões.',
       approach:
-        'Implementei locking otimista com version vectors para deteccao de conflitos. Usei Redis para reserva distribuida de slots com expiracao baseada em TTL. Construi um motor de agendamento timezone-aware com banco de dados ICU de fusos horarios. Adicionei filas Bull para despacho assincrono de notificacoes.',
+        'Implementei locking otimista com version vectors para detecção de conflitos. Usei Redis para reserva distribuída de slots com expiração baseada em TTL. Construí um motor de agendamento timezone-aware com banco de dados ICU de fusos horários. Adicionei filas Bull para despacho assíncrono de notificações.',
       results:
-        'Lidamos com 100K+ tentativas de reserva concorrentes durante picos de matricula com zero double-bookings. Latencia P95 de reserva abaixo de 100ms. O motor de fuso horario tratou corretamente transicoes de horario de verao em todas as regioes suportadas.',
+        'Lidamos com 100K+ tentativas de reserva concorrentes durante picos de matrícula com zero double-bookings. Latência P95 de reserva abaixo de 100ms. O motor de fuso horário tratou corretamente transições de horário de verão em todas as regiões suportadas.',
     },
     locale: 'pt-br',
   },

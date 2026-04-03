@@ -169,154 +169,154 @@ The investment is small (a few hours of setup per service) and the return is eno
   // --- Portuguese ---
   {
     slug: 'saga-vs-choreography',
-    title: 'Saga vs. Coreografia: Escolhendo o Padrao Certo',
+    title: 'Saga vs. Coreografia: Escolhendo o Padrão Certo',
     description:
-      'Um mergulho profundo nos padroes de orquestracao e coreografia para transacoes distribuidas. Quando usar cada um, trade-offs e exemplos reais.',
+      'Um mergulho profundo nos padrões de orquestração e coreografia para transações distribuídas. Quando usar cada um, trade-offs e exemplos reais.',
     date: '2025-11-15',
-    tags: ['Arquitetura', 'Sistemas Distribuidos', 'Padroes'],
+    tags: ['Arquitetura', 'Sistemas Distribuídos', 'Padrões'],
     readingTime: '12 min',
-    content: `## O Problema com Transacoes Distribuidas
+    content: `## O Problema com Transações Distribuídas
 
-Quando voce divide um monolito em microsservicos, perde o luxo de transacoes ACID abrangendo multiplas tabelas. Uma unica operacao de negocio — como fazer um pedido — agora envolve multiplos servicos, cada um com seu proprio banco de dados.
+Quando você divide um monolito em microsserviços, perde o luxo de transações ACID abrangendo múltiplas tabelas. Uma única operação de negócio — como fazer um pedido — agora envolve múltiplos serviços, cada um com seu próprio banco de dados.
 
-A questao nao e se voce precisa de um padrao para isso. Voce precisa. A questao e qual padrao se encaixa no seu contexto.
+A questão não é se você precisa de um padrão para isso. Você precisa. A questão é qual padrão se encaixa no seu contexto.
 
-## Orquestracao (Padrao Saga)
+## Orquestração (Padrão Saga)
 
-Na orquestracao, um coordenador central (o orquestrador) diz a cada servico o que fazer e quando. Pense nisso como um maestro liderando uma orquestra.
+Na orquestração, um coordenador central (o orquestrador) diz a cada serviço o que fazer e quando. Pense nisso como um maestro liderando uma orquestra.
 
-O orquestrador mantem o estado do workflow, decide o proximo passo baseado na resposta de cada servico, e lida com transacoes compensatorias quando algo falha.
+O orquestrador mantém o estado do workflow, decide o próximo passo baseado na resposta de cada serviço e lida com transações compensatórias quando algo falha.
 
-**Quando escolher orquestracao:**
-- Workflows complexos com muitos passos e logica condicional
-- Voce precisa de visibilidade no estado geral do processo
-- A logica de negocio requer tomada de decisao centralizada
-- Voce quer debugging e monitoramento mais faceis
+**Quando escolher orquestração:**
+- Workflows complexos com muitos passos e lógica condicional
+- Você precisa de visibilidade no estado geral do processo
+- A lógica de negócio requer tomada de decisão centralizada
+- Você quer debugging e monitoramento mais fáceis
 
 ## Coreografia
 
-Na coreografia, servicos reagem a eventos de outros servicos. Nao ha coordenador central — cada servico sabe o que fazer quando recebe certos eventos. Pense nisso como um conjunto de jazz onde os musicos escutam uns aos outros.
+Na coreografia, serviços reagem a eventos de outros serviços. Não há coordenador central — cada serviço sabe o que fazer quando recebe certos eventos. Pense nisso como um conjunto de jazz onde os músicos escutam uns aos outros.
 
 **Quando escolher coreografia:**
 - Workflows simples e lineares (A -> B -> C)
-- Times sao autonomos e dono de seus dominios de ponta a ponta
-- Voce quer acoplamento frouxo entre servicos
-- O workflow dificilmente mudara com frequencia
+- Times são autônomos e donos de seus domínios de ponta a ponta
+- Você quer acoplamento frouxo entre serviços
+- O workflow dificilmente mudará com frequência
 
-## A Abordagem Hibrida
+## A Abordagem Híbrida
 
-Na pratica, a maioria dos sistemas usa ambos os padroes. Use coreografia para reacoes simples a eventos (usuario cadastrado -> enviar email de boas-vindas) e orquestracao para processos de negocio complexos (colocacao de pedidos, processamento de pagamentos).
+Na prática, a maioria dos sistemas usa ambos os padrões. Use coreografia para reações simples a eventos (usuário cadastrado -> enviar email de boas-vindas) e orquestração para processos de negócio complexos (colocação de pedidos, processamento de pagamentos).
 
 ## Insight Principal
 
-A escolha nao e sobre superioridade tecnica — ambos os padroes funcionam. E sobre carga cognitiva. Escolha o padrao que torna o comportamento do sistema mais facil de entender, debugar e evoluir para seu time.`,
+A escolha não é sobre superioridade técnica — ambos os padrões funcionam. É sobre carga cognitiva. Escolha o padrão que torna o comportamento do sistema mais fácil de entender, debugar e evoluir para seu time.`,
     locale: 'pt-br',
   },
   {
     slug: 'holonomic-architecture',
-    title: 'Arquitetura Holonomica: Software como Sistemas Vivos',
+    title: 'Arquitetura Holonômica: Software como Sistemas Vivos',
     description:
-      'Aplicando a teoria do holon de Arthur Koestler a arquitetura de software. Como sistemas autocontidos criam plataformas resilientes e evoluiveis.',
+      'Aplicando a teoria do holon de Arthur Koestler à arquitetura de software. Como sistemas autocontidos criam plataformas resilientes e evoluíveis.',
     date: '2025-09-20',
-    tags: ['Arquitetura', 'Holonomico', 'Pensamento Sistemico'],
+    tags: ['Arquitetura', 'Holonômico', 'Pensamento Sistêmico'],
     readingTime: '15 min',
-    content: `## Alem dos Microsservicos
+    content: `## Além dos Microsserviços
 
-Microsservicos resolveram o problema de acoplamento de deploy, mas criaram um novo: complexidade cognitiva. Quando toda feature requer orquestrar 12 servicos, voce nao reduziu a complexidade — voce a distribuiu.
+Microsserviços resolveram o problema de acoplamento de deploy, mas criaram um novo: complexidade cognitiva. Quando toda feature requer orquestrar 12 serviços, você não reduziu a complexidade — você a distribuiu.
 
-A arquitetura holonomica oferece uma lente diferente. Inspirada no conceito de "holon" de Arthur Koestler — algo que e simultaneamente um todo e uma parte — ela propoe que bons sistemas de software sao compostos de unidades autocontidas que sao completas em si mesmas, mas contribuem para um todo maior.
+A arquitetura holonômica oferece uma lente diferente. Inspirada no conceito de "holon" de Arthur Koestler — algo que é simultaneamente um todo e uma parte — ela propõe que bons sistemas de software são compostos de unidades autocontidas que são completas em si mesmas, mas contribuem para um todo maior.
 
 ## O Holon no Software
 
-Um holon de software e um Self-Contained System (SCS): ele possui sua UI, logica de negocio e dados. Pode funcionar independentemente, mas se integra a plataforma maior atraves de contratos bem definidos.
+Um holon de software é um Self-Contained System (SCS): ele possui sua UI, lógica de negócio e dados. Pode funcionar independentemente, mas se integra à plataforma maior através de contratos bem definidos.
 
-Isso nao e novo — e a convergencia dos bounded contexts do Domain-Driven Design, a arquitetura Self-Contained Systems e padroes de micro-frontend. O que o pensamento holonomico adiciona e o framework filosofico de por que isso funciona.
+Isso não é novo — é a convergência dos bounded contexts do Domain-Driven Design, a arquitetura Self-Contained Systems e padrões de micro-frontend. O que o pensamento holonômico adiciona é o framework filosófico de por que isso funciona.
 
 ## O Efeito Janus
 
-Koestler descreveu holons como tendo uma "face de Janus" — olhando para dentro, para sua propria completude, e para fora, para seu papel no sistema maior. No software, isso significa que cada sistema deve:
+Koestler descreveu holons como tendo uma "face de Janus" — olhando para dentro, para sua própria completude, e para fora, para seu papel no sistema maior. No software, isso significa que cada sistema deve:
 
-1. **Olhar para dentro**: Ser totalmente funcional por conta propria. Possuir seu deploy, dados e experiencia do usuario.
-2. **Olhar para fora**: Participar da plataforma maior atraves de eventos, contratos compartilhados e padroes de integracao.
+1. **Olhar para dentro**: Ser totalmente funcional por conta própria. Possuir seu deploy, dados e experiência do usuário.
+2. **Olhar para fora**: Participar da plataforma maior através de eventos, contratos compartilhados e padrões de integração.
 
-## Implicacoes Praticas
+## Implicações Práticas
 
-Quando voce projeta sistemas como holons, obtem limites naturais de time (alinhamento com a Lei de Conway), deployabilidade independente e degradacao graceful. Se um holon falha, os outros continuam funcionando.
+Quando você projeta sistemas como holons, obtém limites naturais de time (alinhamento com a Lei de Conway), deployabilidade independente e degradação graceful. Se um holon falha, os outros continuam funcionando.
 
-O insight principal e que autonomia e integracao nao sao opostos — sao propriedades complementares de sistemas bem projetados.`,
+O insight principal é que autonomia e integração não são opostos — são propriedades complementares de sistemas bem projetados.`,
     locale: 'pt-br',
   },
   {
     slug: 'parse-dont-validate',
-    title: 'Parse, Nao Valide: Fronteiras Type-Safe',
+    title: 'Parse, Não Valide: Fronteiras Type-Safe',
     description:
-      'Como empurrar a validacao para as bordas do seu sistema e confiar nos seus tipos internamente. Um guia pratico do padrao parse-don\'t-validate.',
+      'Como empurrar a validação para as bordas do seu sistema e confiar nos seus tipos internamente. Um guia prático do padrão parse-don\'t-validate.',
     date: '2025-07-10',
-    tags: ['TypeScript', 'Type Safety', 'Padroes'],
+    tags: ['TypeScript', 'Type Safety', 'Padrões'],
     readingTime: '8 min',
-    content: `## O Problema com Validacao
+    content: `## O Problema com Validação
 
-A maioria dos codebases valida dados em toda camada. O controller valida, o service valida novamente, o repository adiciona suas proprias checagens. Isso cria programacao defensiva que obscurece a logica de negocio.
+A maioria dos codebases valida dados em toda camada. O controller valida, o service valida novamente, o repository adiciona suas próprias checagens. Isso cria programação defensiva que obscurece a lógica de negócio.
 
-A alternativa: parse seus dados uma vez na fronteira, transforme-os em um objeto de dominio fortemente tipado, e confie nos seus tipos daquele ponto em diante.
+A alternativa: faça o parse dos seus dados uma vez na fronteira, transforme-os em um objeto de domínio fortemente tipado e confie nos seus tipos daquele ponto em diante.
 
 ## Parse na Fronteira
 
-Quando dados entram no seu sistema (requisicao HTTP, mensagem de fila, upload de arquivo), faca o parse imediatamente em um tipo de dominio:
+Quando dados entram no seu sistema (requisição HTTP, mensagem de fila, upload de arquivo), faça o parse imediatamente em um tipo de domínio:
 
-Em vez de passar um objeto plano e checar \`if (user.email)\` em todo lugar, faca o parse da requisicao em um tipo \`ValidUser\` no nivel do controller. A partir desse ponto, toda funcao que recebe um \`ValidUser\` sabe que os dados sao validos por construcao.
+Em vez de passar um objeto plano e checar \`if (user.email)\` em todo lugar, faça o parse da requisição em um tipo \`ValidUser\` no nível do controller. A partir desse ponto, toda função que recebe um \`ValidUser\` sabe que os dados são válidos por construção.
 
 ## Branded Types
 
-Para seguranca extra, use branded types (tambem chamado de newtype pattern) para distinguir entre strings semanticamente diferentes:
+Para segurança extra, use branded types (também chamado de newtype pattern) para distinguir entre strings semanticamente diferentes:
 
-Um \`UserId\` nao e um \`PostId\`, mesmo que ambos sejam strings. Branded types fazem essa distincao no nivel do tipo, prevenindo uma categoria de bugs onde voce acidentalmente passa o ID errado.
+Um \`UserId\` não é um \`PostId\`, mesmo que ambos sejam strings. Branded types fazem essa distinção no nível do tipo, prevenindo uma categoria de bugs onde você acidentalmente passa o ID errado.
 
-## O Padrao Funil
+## O Padrão Funil
 
-Pense no seu sistema como um funil: largo e permissivo no topo (input cru), estreito e rigoroso no fundo (tipos de dominio). Cada camada estreita o tipo, e uma vez que os dados passam, sao confiaveis.
+Pense no seu sistema como um funil: largo e permissivo no topo (input cru), estreito e rigoroso no fundo (tipos de domínio). Cada camada estreita o tipo, e uma vez que os dados passam, são confiáveis.
 
-Isso reduz a carga cognitiva dramaticamente — voce nunca precisa se perguntar "esse valor e valido?" porque o sistema de tipos garante.`,
+Isso reduz a carga cognitiva dramaticamente — você nunca precisa se perguntar "esse valor é válido?" porque o sistema de tipos garante.`,
     locale: 'pt-br',
   },
   {
     slug: 'observability-first',
     title: 'Desenvolvimento Observability-First',
     description:
-      'Por que adiciono logging estruturado, tracing e metricas antes de escrever logica de negocio. Um framework pratico para sistemas observaveis.',
+      'Por que adiciono logging estruturado, tracing e métricas antes de escrever lógica de negócio. Um framework prático para sistemas observáveis.',
     date: '2025-05-22',
-    tags: ['Observabilidade', 'DevOps', 'Boas Praticas'],
+    tags: ['Observabilidade', 'DevOps', 'Boas Práticas'],
     readingTime: '10 min',
     content: `## O Custo da Observabilidade
 
-A maioria dos times trata observabilidade como algo secundario — algo que voce adiciona quando as coisas quebram em producao. Mas retrofitar observabilidade em codigo existente e caro e geralmente incompleto.
+A maioria dos times trata observabilidade como algo secundário — algo que você adiciona quando as coisas quebram em produção. Mas retrofitar observabilidade em código existente é caro e geralmente incompleto.
 
-E se voce comecasse com observabilidade?
+E se você começasse com observabilidade?
 
 ## O Framework
 
-Antes de escrever qualquer logica de negocio para um novo servico, configuro tres coisas:
+Antes de escrever qualquer lógica de negócio para um novo serviço, configuro três coisas:
 
-1. **Logging estruturado** com correlation IDs, nomes de operacao e rastreamento de duracao
-2. **Tracing distribuido** com OpenTelemetry, propagando contexto de trace entre fronteiras de servico
-3. **Metricas de negocio** — nao apenas metricas de sistema (CPU, memoria), mas metricas de dominio (pedidos processados, pagamentos falhados, usuarios onboarded)
+1. **Logging estruturado** com correlation IDs, nomes de operação e rastreamento de duração
+2. **Tracing distribuído** com OpenTelemetry, propagando contexto de trace entre fronteiras de serviço
+3. **Métricas de negócio** — não apenas métricas de sistema (CPU, memória), mas métricas de domínio (pedidos processados, pagamentos falhados, usuários onboarded)
 
 ## Log Levels como Contratos
 
-Log levels nao sao arbitrarios — sao contratos com seu time de operacoes:
+Log levels não são arbitrários — são contratos com seu time de operações:
 
-- **ERROR**: Aciona alguem. Producao esta quebrada, impacto no cliente.
+- **ERROR**: Aciona alguém. Produção está quebrada, impacto no cliente.
 - **WARN**: Investigar eventualmente. Algo inesperado, mas tratado.
-- **INFO**: Evento de negocio ocorreu. Trilha de auditoria.
-- **DEBUG**: Contexto do desenvolvedor. Desabilitado em producao.
+- **INFO**: Evento de negócio ocorreu. Trilha de auditoria.
+- **DEBUG**: Contexto do desenvolvedor. Desabilitado em produção.
 
-Quando todos no time tratam log levels como contratos, seus alertas se tornam confiaveis e seus dashboards se tornam significativos.
+Quando todos no time tratam log levels como contratos, seus alertas se tornam confiáveis e seus dashboards se tornam significativos.
 
 ## O Retorno
 
-Com observabilidade construida desde o dia um, debugging se torna investigacao em vez de adivinhacao. Voce pode responder perguntas como "por que o pagamento desse usuario falhou?" seguindo um unico trace ID atraves dos logs de todos os servicos envolvidos.
+Com observabilidade construída desde o dia um, debugging se torna investigação em vez de adivinhação. Você pode responder perguntas como "por que o pagamento desse usuário falhou?" seguindo um único trace ID através dos logs de todos os serviços envolvidos.
 
-O investimento e pequeno (algumas horas de setup por servico) e o retorno e enorme (horas economizadas por incidente, desenvolvimento de features mais rapido com confianca).`,
+O investimento é pequeno (algumas horas de setup por serviço) e o retorno é enorme (horas economizadas por incidente, desenvolvimento de features mais rápido com confiança).`,
     locale: 'pt-br',
   },
 ];

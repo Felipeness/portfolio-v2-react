@@ -254,7 +254,7 @@ const translations = {
   },
   'pt-br': {
     nav: {
-      home: 'Inicio',
+      home: 'Início',
       cases: 'Cases',
       blog: 'Blog',
       book: 'Livro',
@@ -266,9 +266,9 @@ const translations = {
     hero: {
       tag: 'Staff Engineer & Solution Architect',
       titleLine1: 'Construindo sistemas que',
-      titleHighlight: 'escalam com proposito',
+      titleHighlight: 'escalam com propósito',
       description:
-        'Arquiteto e construo sistemas distribuidos de alto impacto, plataformas de desenvolvimento e culturas de engenharia. 10+ anos transformando complexidade em clareza em fintech, SaaS e enterprise.',
+        'Arquiteto e construo sistemas distribuídos de alto impacto, plataformas de desenvolvimento e culturas de engenharia. 10+ anos transformando complexidade em clareza em fintech, SaaS e enterprise.',
       cta: 'Ver Case Studies',
       ctaSecondary: 'Sobre Mim',
       scroll: 'SCROLL',
@@ -277,17 +277,17 @@ const translations = {
       cases: {
         tag: 'Trabalhos Selecionados',
         title: 'Case Studies',
-        description: 'Sistemas reais que projetei e construi. Cada um conta uma historia de restricoes, trade-offs e resultados.',
+        description: 'Sistemas reais que projetei e construí. Cada um conta uma história de restrições, trade-offs e resultados.',
       },
       blog: {
         tag: 'Escrita',
         title: 'Blog',
-        description: 'Pensamentos sobre arquitetura, cultura de engenharia e o oficio de construir software.',
+        description: 'Reflexões sobre arquitetura, cultura de engenharia e o ofício de construir software.',
       },
       book: {
         tag: 'Autor Publicado',
         title: 'O Todo e a Parte',
-        description: 'Um livro sobre ver software atraves da lente de sistemas vivos. Arquitetura holonomica para times que constroem para durar.',
+        description: 'Um livro sobre enxergar software através da lente de sistemas vivos. Arquitetura holonômica para times que constroem para durar.',
       },
       about: {
         tag: 'Background',
@@ -295,9 +295,9 @@ const translations = {
         description: 'A jornada de desenvolvedor curioso a pensador de sistemas.',
       },
       oss: {
-        tag: 'Codigo Aberto',
-        title: 'Contribuicoes OSS',
-        description: 'Contribuindo para as ferramentas que todos dependemos.',
+        tag: 'Código Aberto',
+        title: 'Contribuições OSS',
+        description: 'Contribuindo para as ferramentas das quais todos dependemos.',
       },
       uses: {
         tag: 'Setup',
@@ -306,25 +306,25 @@ const translations = {
       },
     },
     whatIDo: {
-      title: 'O Que Eu Faco',
+      title: 'O Que Eu Faço',
       capabilities: [
-        'Arquitetando sistemas distribuidos',
+        'Arquitetando sistemas distribuídos',
         'Liderando times de engenharia',
         'Entregando SaaS enterprise',
         'Escrevendo sobre tudo isso',
       ],
     },
     impact: {
-      title: 'Impacto em Numeros',
+      title: 'Impacto em Números',
       metrics: [
-        { value: 10, prefix: '', suffix: '+', label: 'Anos de experiencia' },
-        { value: 60, prefix: '-', suffix: '%', label: 'Reducao de LCP' },
+        { value: 10, prefix: '', suffix: '+', label: 'Anos de experiência' },
+        { value: 60, prefix: '-', suffix: '%', label: 'Redução de LCP' },
         { value: 30, prefix: '-', suffix: '%', label: 'Ciclo de release' },
-        { value: 62, prefix: '', suffix: '', label: 'Capitulos publicados' },
+        { value: 62, prefix: '', suffix: '', label: 'Capítulos publicados' },
       ],
     },
     philosophy: {
-      text: 'Eu penso em sistemas, escrevo em TypeScript e Go, e acredito que boa arquitetura torna o complexo simples. Cada linha de codigo e uma decisao. Cada abstracao e um trade-off. Os melhores sistemas sao os que voce mal percebe.',
+      text: 'Penso em sistemas, escrevo em TypeScript e Go, e acredito que boa arquitetura torna o complexo simples. Cada linha de código é uma decisão. Cada abstração é um trade-off. Os melhores sistemas são os que você mal percebe.',
     },
     recentWriting: {
       title: 'Escrita Recente',
@@ -341,33 +341,33 @@ const translations = {
     },
     commandPalette: {
       placeholder: 'Digite um comando ou busque...',
-      pages: 'Paginas',
-      actions: 'Acoes',
+      pages: 'Páginas',
+      actions: 'Ações',
       noResults: 'Nenhum resultado encontrado.',
     },
     about: {
       bio: [
-        'Sou Felipe Soares, Staff Engineer e Solution Architect com mais de 10 anos de experiencia construindo sistemas de alto impacto em fintech, SaaS e enterprise.',
-        'Minha jornada comecou com um fascinio por como sistemas complexos emergem de regras simples. Essa curiosidade me levou de construir meus primeiros sites em PHP a arquitetar plataformas distribuidas servindo milhoes de usuarios.',
-        'Hoje, foco na interseccao entre design de sistemas, experiencia do desenvolvedor e cultura de engenharia. Acredito que as melhores arquiteturas nao sao apenas tecnicamente solidas — elas amplificam a capacidade do time de entregar valor.',
-        'Sou autor de "O Todo e a Parte", um livro que aplica a teoria holonomica a arquitetura de software. Contribuo para projetos open-source incluindo Node.js, Next.js e React, e sou apaixonado por mentorar a proxima geracao de pensadores de sistemas.',
-        'Quando nao estou escrevendo codigo ou prosa, voce me encontra explorando filosofia, tocando guitarra ou caminhando com meu cachorro.',
+        'Sou Felipe Soares, Staff Engineer e Solution Architect com mais de 10 anos de experiência construindo sistemas de alto impacto em fintech, SaaS e enterprise.',
+        'Minha jornada começou com um fascínio por como sistemas complexos emergem de regras simples. Essa curiosidade me levou de construir meus primeiros sites em PHP a arquitetar plataformas distribuídas servindo milhões de usuários.',
+        'Hoje, foco na interseção entre design de sistemas, experiência do desenvolvedor e cultura de engenharia. Acredito que as melhores arquiteturas não são apenas tecnicamente sólidas — elas amplificam a capacidade do time de entregar valor.',
+        'Sou autor de "O Todo e a Parte", um livro que aplica a teoria holonômica à arquitetura de software. Contribuo para projetos open-source incluindo Node.js, Next.js e React, e sou apaixonado por mentorar a próxima geração de pensadores de sistemas.',
+        'Quando não estou escrevendo código ou prosa, você me encontra explorando filosofia, tocando guitarra ou caminhando com meu cachorro.',
       ],
       impactMetrics: [
-        { value: 10, suffix: '+', label: 'Anos de Experiencia' },
+        { value: 10, suffix: '+', label: 'Anos de Experiência' },
         { value: 200, suffix: '+', label: 'Devs Mentorados' },
-        { value: 50, suffix: 'M+', label: 'Usuarios Impactados' },
+        { value: 50, suffix: 'M+', label: 'Usuários Impactados' },
         { value: 15, suffix: '+', label: 'Sistemas Arquitetados' },
       ],
     },
     book: {
       coverTitle: 'O Todo e a Parte',
       coverAuthor: 'Felipe Soares',
-      coverSubtitle: 'Arquitetura Holonomica',
+      coverSubtitle: 'Arquitetura Holonômica',
       bulletPoints: [
         'Como a teoria do holon de Arthur Koestler se aplica a sistemas de software',
         'Self-Contained Systems como a unidade natural de entrega de software',
-        'Padroes praticos para times construindo plataformas que evoluem',
+        'Padrões práticos para times construindo plataformas que evoluem',
       ],
       readMore: 'Saiba Mais',
     },
@@ -386,22 +386,22 @@ const translations = {
       projects: [
         {
           name: 'Node.js',
-          description: 'Contribuindo para o runtime Node.js — melhorias de API, infraestrutura de testes e documentacao.',
+          description: 'Contribuindo para o runtime Node.js — melhorias de API, infraestrutura de testes e documentação.',
           role: 'Contribuidor',
         },
         {
           name: 'Next.js',
-          description: 'Otimizacoes de performance e correcoes de bugs para o framework React.',
+          description: 'Otimizações de performance e correções de bugs para o framework React.',
           role: 'Contribuidor',
         },
         {
           name: 'React',
-          description: 'Melhorias na documentacao e feedback do compilador para a biblioteca de UI.',
+          description: 'Melhorias na documentação e feedback do compilador para a biblioteca de UI.',
           role: 'Contribuidor',
         },
         {
           name: 'Prisma',
-          description: 'Contribuicoes ao ORM TypeScript — melhorias no query engine e geracao de tipos.',
+          description: 'Contribuições ao ORM TypeScript — melhorias no query engine e geração de tipos.',
           role: 'Contribuidor',
         },
         {
@@ -411,7 +411,7 @@ const translations = {
         },
         {
           name: 'otel-dev',
-          description: 'Setup de OpenTelemetry amigavel ao desenvolvedor para microsservicos Node.js.',
+          description: 'Setup de OpenTelemetry amigável ao desenvolvedor para microsserviços Node.js.',
           role: 'Autor',
         },
       ],
@@ -421,72 +421,72 @@ const translations = {
         {
           name: 'Editor & IDE',
           items: [
-            { name: 'VS Code', description: 'Editor principal com keybindings Vim para velocidade e precisao.' },
-            { name: 'Claude Code CLI', description: 'Assistente de codigo com IA para tarefas arquiteturais complexas e refatoracao.' },
-            { name: 'Cursor', description: 'IDE com IA baseada no VS Code. Usado para prototipagem rapida e exploracao.' },
+            { name: 'VS Code', description: 'Editor principal com keybindings Vim para velocidade e precisão.' },
+            { name: 'Claude Code CLI', description: 'Assistente de código com IA para tarefas arquiteturais complexas e refatoração.' },
+            { name: 'Cursor', description: 'IDE com IA baseada no VS Code. Usado para prototipagem rápida e exploração.' },
           ],
         },
         {
           name: 'Terminal',
           items: [
-            { name: 'Windows Terminal', description: 'Terminal moderno com abas, paineis e renderizacao GPU.' },
+            { name: 'Windows Terminal', description: 'Terminal moderno com abas, painéis e renderização GPU.' },
             { name: 'PowerShell 7', description: 'Shell cross-platform com pipelines de dados estruturados.' },
-            { name: 'Oh My Posh', description: 'Tema de prompt customizado com status git, versao node e indicadores de contexto.' },
+            { name: 'Oh My Posh', description: 'Tema de prompt customizado com status git, versão node e indicadores de contexto.' },
           ],
         },
         {
           name: 'Hardware',
           items: [
-            { name: 'Desktop Custom', description: 'Build customizado com Windows 11. Feito para compilacao pesada e workloads paralelos.' },
-            { name: 'Ultrawide 34"', description: 'Monitor principal para trabalho focado — codigo de um lado, terminal do outro.' },
-            { name: 'Teclado Mecanico', description: 'Teclado mecanico — o feedback tatil mantem o ritmo.' },
-            { name: 'Logitech MX Master', description: 'Mouse ergonomico com botoes customizaveis e troca entre dispositivos.' },
+            { name: 'Desktop Custom', description: 'Build customizado com Windows 11. Feito para compilação pesada e workloads paralelos.' },
+            { name: 'Ultrawide 34"', description: 'Monitor principal para trabalho focado — código de um lado, terminal do outro.' },
+            { name: 'Teclado Mecânico', description: 'Teclado mecânico — o feedback tátil mantém o ritmo.' },
+            { name: 'Logitech MX Master', description: 'Mouse ergonômico com botões customizáveis e troca entre dispositivos.' },
           ],
         },
         {
           name: 'Linguagens & Frameworks',
           items: [
             { name: 'TypeScript', description: 'Linguagem principal para backend e frontend. Type-safety em tudo.' },
-            { name: 'Go', description: 'Para programacao de sistemas, APIs criticas de performance e ferramentas CLI.' },
-            { name: 'Python', description: 'Scripts, automacao e experimentos com ML.' },
-            { name: 'React & Next.js', description: 'Framework frontend de escolha para aplicacoes SSR/SSG.' },
-            { name: 'NestJS & Fastify', description: 'Frameworks backend para APIs enterprise e microsservicos.' },
+            { name: 'Go', description: 'Para programação de sistemas, APIs críticas de performance e ferramentas CLI.' },
+            { name: 'Python', description: 'Scripts, automação e experimentos com ML.' },
+            { name: 'React & Next.js', description: 'Framework frontend de escolha para aplicações SSR/SSG.' },
+            { name: 'NestJS & Fastify', description: 'Frameworks backend para APIs enterprise e microsserviços.' },
           ],
         },
         {
-          name: 'Filas & Orquestracao',
+          name: 'Filas & Orquestração',
           items: [
-            { name: 'RabbitMQ', description: 'Message broker para comunicacao assincrona entre microsservicos.' },
+            { name: 'RabbitMQ', description: 'Message broker para comunicação assíncrona entre microsserviços.' },
             { name: 'Apache Kafka', description: 'Plataforma de streaming de eventos para pipelines real-time de alto throughput.' },
-            { name: 'Temporal', description: 'Orquestracao de workflows duraveis para processos de negocio de longa duracao.' },
+            { name: 'Temporal', description: 'Orquestração de workflows duráveis para processos de negócio de longa duração.' },
           ],
         },
         {
           name: 'Infraestrutura',
           items: [
             { name: 'AWS', description: 'Cloud principal — ECS, Lambda, S3, CloudFront, RDS, SQS e mais.' },
-            { name: 'Docker + Compose', description: 'Containerizacao para dev local e deploys em producao.' },
-            { name: 'Terraform', description: 'Infraestrutura como codigo para ambientes reproduziveis e auditaveis.' },
+            { name: 'Docker + Compose', description: 'Containerização para dev local e deploys em produção.' },
+            { name: 'Terraform', description: 'Infraestrutura como código para ambientes reproduzíveis e auditáveis.' },
             { name: 'GitHub Actions', description: 'Pipelines CI/CD para testes, builds e deploys.' },
-            { name: 'Cloudflare', description: 'CDN, DNS e edge computing para distribuicao global.' },
+            { name: 'Cloudflare', description: 'CDN, DNS e edge computing para distribuição global.' },
           ],
         },
         {
           name: 'Bancos de Dados',
           items: [
-            { name: 'PostgreSQL', description: 'Banco relacional principal. Testado em batalha e confiavel.' },
-            { name: 'Redis', description: 'Cache em memoria, session store e backend de filas.' },
-            { name: 'MongoDB', description: 'Document store para casos de uso com schema flexivel.' },
-            { name: 'MariaDB', description: 'Banco relacional compativel com MySQL para setups de alta disponibilidade.' },
-            { name: 'Cassandra', description: 'NoSQL wide-column para workloads distribuidos com escrita massiva.' },
-            { name: 'Pinecone / pgvector', description: 'Bancos vetoriais para embeddings de IA, busca semantica e pipelines RAG.' },
+            { name: 'PostgreSQL', description: 'Banco relacional principal. Testado em batalha e confiável.' },
+            { name: 'Redis', description: 'Cache em memória, session store e backend de filas.' },
+            { name: 'MongoDB', description: 'Document store para casos de uso com schema flexível.' },
+            { name: 'MariaDB', description: 'Banco relacional compatível com MySQL para setups de alta disponibilidade.' },
+            { name: 'Cassandra', description: 'NoSQL wide-column para workloads distribuídos com escrita massiva.' },
+            { name: 'Pinecone / pgvector', description: 'Bancos vetoriais para embeddings de IA, busca semântica e pipelines RAG.' },
           ],
         },
         {
           name: 'Observabilidade',
           items: [
-            { name: 'Grafana + Loki', description: 'Dashboards e agregacao de logs para sistemas distribuidos.' },
-            { name: 'OpenTelemetry', description: 'Tracing distribuido e coleta de metricas entre servicos.' },
+            { name: 'Grafana + Loki', description: 'Dashboards e agregação de logs para sistemas distribuídos.' },
+            { name: 'OpenTelemetry', description: 'Tracing distribuído e coleta de métricas entre serviços.' },
             { name: 'Datadog', description: 'Monitoramento full-stack, APM e observabilidade de infraestrutura.' },
             { name: 'Sentry', description: 'Rastreamento de erros e monitoramento de performance com source maps.' },
           ],
@@ -494,10 +494,10 @@ const translations = {
         {
           name: 'Ferramentas do Dia a Dia',
           items: [
-            { name: 'Obsidian', description: 'Notas em Markdown, escrita e gestao de conhecimento pessoal.' },
-            { name: 'Figma', description: 'Design UI/UX, prototipagem e gestao de design system.' },
-            { name: 'Linear', description: 'Gestao de projetos que respeita desenvolvedores. Rapido e orientado a teclado.' },
-            { name: 'Notion', description: 'Documentacao de time, wikis e base de conhecimento colaborativa.' },
+            { name: 'Obsidian', description: 'Notas em Markdown, escrita e gestão de conhecimento pessoal.' },
+            { name: 'Figma', description: 'Design UI/UX, prototipagem e gestão de design system.' },
+            { name: 'Linear', description: 'Gestão de projetos que respeita desenvolvedores. Rápido e orientado a teclado.' },
+            { name: 'Notion', description: 'Documentação de time, wikis e base de conhecimento colaborativa.' },
           ],
         },
       ],
