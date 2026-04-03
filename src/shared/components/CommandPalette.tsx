@@ -60,7 +60,6 @@ export function CommandPalette({ locale, open, onOpenChange }: CommandPalettePro
     { label: translations.nav.about, path: `/${locale}/about` },
     { label: translations.nav.oss, path: `/${locale}/oss` },
     { label: translations.nav.uses, path: `/${locale}/uses` },
-    { label: translations.nav.contact, path: `/${locale}/contact` },
   ];
 
   return (

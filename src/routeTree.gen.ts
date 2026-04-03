@@ -14,7 +14,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleUsesRouteImport } from './routes/$locale/uses'
 import { Route as LocaleOssRouteImport } from './routes/$locale/oss'
-import { Route as LocaleContactRouteImport } from './routes/$locale/contact'
 import { Route as LocaleBookRouteImport } from './routes/$locale/book'
 import { Route as LocaleAboutRouteImport } from './routes/$locale/about'
 import { Route as LocaleCasesIndexRouteImport } from './routes/$locale/cases/index'
@@ -45,11 +44,6 @@ const LocaleUsesRoute = LocaleUsesRouteImport.update({
 const LocaleOssRoute = LocaleOssRouteImport.update({
   id: '/oss',
   path: '/oss',
-  getParentRoute: () => LocaleRouteRoute,
-} as any)
-const LocaleContactRoute = LocaleContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
   getParentRoute: () => LocaleRouteRoute,
 } as any)
 const LocaleBookRoute = LocaleBookRouteImport.update({
@@ -88,7 +82,6 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleRouteRouteWithChildren
   '/$locale/about': typeof LocaleAboutRoute
   '/$locale/book': typeof LocaleBookRoute
-  '/$locale/contact': typeof LocaleContactRoute
   '/$locale/oss': typeof LocaleOssRoute
   '/$locale/uses': typeof LocaleUsesRoute
   '/$locale/': typeof LocaleIndexRoute
@@ -101,7 +94,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale/about': typeof LocaleAboutRoute
   '/$locale/book': typeof LocaleBookRoute
-  '/$locale/contact': typeof LocaleContactRoute
   '/$locale/oss': typeof LocaleOssRoute
   '/$locale/uses': typeof LocaleUsesRoute
   '/$locale': typeof LocaleIndexRoute
@@ -116,7 +108,6 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteRouteWithChildren
   '/$locale/about': typeof LocaleAboutRoute
   '/$locale/book': typeof LocaleBookRoute
-  '/$locale/contact': typeof LocaleContactRoute
   '/$locale/oss': typeof LocaleOssRoute
   '/$locale/uses': typeof LocaleUsesRoute
   '/$locale/': typeof LocaleIndexRoute
@@ -132,7 +123,6 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/about'
     | '/$locale/book'
-    | '/$locale/contact'
     | '/$locale/oss'
     | '/$locale/uses'
     | '/$locale/'
@@ -145,7 +135,6 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale/about'
     | '/$locale/book'
-    | '/$locale/contact'
     | '/$locale/oss'
     | '/$locale/uses'
     | '/$locale'
@@ -159,7 +148,6 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/about'
     | '/$locale/book'
-    | '/$locale/contact'
     | '/$locale/oss'
     | '/$locale/uses'
     | '/$locale/'
@@ -211,13 +199,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleOssRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
-    '/$locale/contact': {
-      id: '/$locale/contact'
-      path: '/contact'
-      fullPath: '/$locale/contact'
-      preLoaderRoute: typeof LocaleContactRouteImport
-      parentRoute: typeof LocaleRouteRoute
-    }
     '/$locale/book': {
       id: '/$locale/book'
       path: '/book'
@@ -266,7 +247,6 @@ declare module '@tanstack/react-router' {
 interface LocaleRouteRouteChildren {
   LocaleAboutRoute: typeof LocaleAboutRoute
   LocaleBookRoute: typeof LocaleBookRoute
-  LocaleContactRoute: typeof LocaleContactRoute
   LocaleOssRoute: typeof LocaleOssRoute
   LocaleUsesRoute: typeof LocaleUsesRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
@@ -279,7 +259,6 @@ interface LocaleRouteRouteChildren {
 const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
   LocaleAboutRoute: LocaleAboutRoute,
   LocaleBookRoute: LocaleBookRoute,
-  LocaleContactRoute: LocaleContactRoute,
   LocaleOssRoute: LocaleOssRoute,
   LocaleUsesRoute: LocaleUsesRoute,
   LocaleIndexRoute: LocaleIndexRoute,
