@@ -1,34 +1,25 @@
-import { useLayoutEffect, useRef } from 'react';
-import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
+import { useEffect, useState } from 'react';
 
 export function ScrollProgress() {
-  const barRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
 
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined' || !barRef.current) return;
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
-    const ctx = gsap.context(() => {
-      gsap.to(barRef.current, {
-        scaleX: 1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: document.documentElement,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 0.3,
-        },
-      });
-    });
-
-    return () => ctx.revert();
+    function onScroll() {
+      const total =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(total > 0 ? window.scrollY / total : 0);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[100] h-[2px]">
       <div
-        ref={barRef}
-        className="h-full bg-gradient-to-r from-orange-hover via-orange to-brand-red origin-left"
-        style={{ transform: 'scaleX(0)' }}
+        className="h-full bg-gradient-to-r from-orange-hover via-orange to-brand-red origin-left transition-transform duration-150"
+        style={{ transform: `scaleX(${progress})` }}
       />
     </div>
   );
