@@ -28,10 +28,15 @@ export function Philosophy({ locale }: PhilosophyProps) {
       element.removeChild(element.firstChild);
     }
 
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const dimColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)';
+    const brightColor = isDark ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.95)';
+
     const spans = words.map((word) => {
       const span = document.createElement('span');
-      span.style.color = 'rgba(255,255,255,0.15)';
+      span.style.color = dimColor;
       span.style.display = 'inline';
+      span.style.transition = 'color 0.1s ease';
       span.textContent = word === ' ' ? '\u00A0' : word;
       span.setAttribute('aria-hidden', 'true');
       element.appendChild(span);
@@ -40,7 +45,7 @@ export function Philosophy({ locale }: PhilosophyProps) {
 
     const ctx = gsap.context(() => {
       gsap.to(spans, {
-        color: 'rgba(255,255,255,0.95)',
+        color: brightColor,
         stagger: 0.03,
         scrollTrigger: {
           trigger: element,

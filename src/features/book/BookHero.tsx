@@ -41,7 +41,7 @@ export function BookHero({ locale }: BookHeroProps) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="max-w-7xl mx-auto px-6 py-24">
+    <section ref={sectionRef} className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Book cover */}
         <div

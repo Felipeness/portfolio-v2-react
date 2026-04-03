@@ -1,13 +1,52 @@
 import { createFileRoute, notFound } from '@tanstack/react-router';
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { getPostBySlug } from '~/features/blog/data';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
+import { TechBadge } from '~/shared/components/TechBadge';
 
 export const Route = createFileRoute('/$locale/blog/$slug')({
   component: BlogDetailPage,
 });
+
+function renderInline(text: string): ReactNode {
+  const parts: ReactNode[] = [];
+  let remaining = text;
+  let key = 0;
+
+  while (remaining.length > 0) {
+    // Bold: **text**
+    const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
+    // Inline code: `text`
+    const codeMatch = remaining.match(/`(.+?)`/);
+
+    const matches = [
+      boldMatch ? { type: 'bold' as const, index: boldMatch.index!, match: boldMatch } : null,
+      codeMatch ? { type: 'code' as const, index: codeMatch.index!, match: codeMatch } : null,
+    ].filter(Boolean).sort((a, b) => a!.index - b!.index);
+
+    if (matches.length === 0) {
+      parts.push(remaining);
+      break;
+    }
+
+    const first = matches[0]!;
+    if (first.index > 0) {
+      parts.push(remaining.slice(0, first.index));
+    }
+
+    if (first.type === 'bold') {
+      parts.push(<strong key={key++}>{first.match[1]}</strong>);
+    } else {
+      parts.push(<code key={key++}>{first.match[1]}</code>);
+    }
+
+    remaining = remaining.slice(first.index + first.match[0].length);
+  }
+
+  return parts.length === 1 ? parts[0] : parts;
+}
 
 function BlogDetailPage() {
   const { locale, slug } = Route.useParams();
@@ -21,7 +60,7 @@ function BlogDetailPage() {
   }
 
   return (
-    <article className="max-w-3xl mx-auto px-6 py-24">
+    <article className="max-w-3xl mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32">
       {/* Back link */}
       <Link
         to="/$locale/blog"
@@ -59,52 +98,41 @@ function BlogDetailPage() {
 
         <div className="flex flex-wrap gap-2 mt-6">
           {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1.5 rounded-md text-xs font-mono bg-bg-surface border border-border-subtle text-text-muted"
-            >
-              {tag}
-            </span>
+            <TechBadge key={tag} variant="secondary">{tag}</TechBadge>
           ))}
         </div>
       </header>
 
       {/* Content */}
       <div ref={contentRef} className="prose">
-        {post.content.split('\n\n').map((paragraph, i) => {
-          if (paragraph.startsWith('## ')) {
-            return (
-              <h2 key={i}>{paragraph.replace('## ', '')}</h2>
-            );
+        {post.content.split('\n\n').map((block, i) => {
+          if (block.startsWith('## ')) {
+            return <h2 key={i}>{block.slice(3)}</h2>;
           }
-          if (paragraph.startsWith('**')) {
-            return (
-              <p key={i}>
-                <strong>{paragraph.replace(/\*\*/g, '')}</strong>
-              </p>
-            );
-          }
-          if (paragraph.startsWith('- ')) {
-            const items = paragraph.split('\n').filter(Boolean);
+
+          if (block.startsWith('- ')) {
+            const items = block.split('\n').filter(Boolean);
             return (
               <ul key={i}>
                 {items.map((item, j) => (
-                  <li key={j}>{item.replace('- ', '')}</li>
+                  <li key={j}>{renderInline(item.replace(/^- /, ''))}</li>
                 ))}
               </ul>
             );
           }
-          if (paragraph.startsWith('1. ') || paragraph.startsWith('2. ')) {
-            const items = paragraph.split('\n').filter(Boolean);
+
+          if (/^\d+\.\s/.test(block)) {
+            const items = block.split('\n').filter(Boolean);
             return (
               <ol key={i}>
                 {items.map((item, j) => (
-                  <li key={j}>{item.replace(/^\d+\.\s/, '')}</li>
+                  <li key={j}>{renderInline(item.replace(/^\d+\.\s/, ''))}</li>
                 ))}
               </ol>
             );
           }
-          return <p key={i}>{paragraph}</p>;
+
+          return <p key={i}>{renderInline(block)}</p>;
         })}
       </div>
     </article>

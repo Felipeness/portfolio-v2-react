@@ -7,6 +7,7 @@ import { ImpactNumbers } from '~/features/home/ImpactNumbers';
 import { Philosophy } from '~/features/home/Philosophy';
 import { RecentWriting } from '~/features/home/RecentWriting';
 import { ContactCTA } from '~/features/home/ContactCTA';
+import { SectionDivider } from '~/shared/components/SectionDivider';
 
 export const Route = createFileRoute('/$locale/')({
   component: HomePage,
@@ -21,9 +22,12 @@ function HomePage() {
       <Hero locale={validLocale} />
       <WhatIDo locale={validLocale} />
       <FeaturedCases locale={validLocale} />
+      <SectionDivider />
       <ImpactNumbers locale={validLocale} />
       <Philosophy locale={validLocale} />
+      <SectionDivider />
       <RecentWriting locale={validLocale} />
+      <SectionDivider />
       <ContactCTA locale={validLocale} />
     </>
   );

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useState, useEffect } from 'react';
+import { Link, useRouterState } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
 import { ThemeToggle } from './ThemeToggle';
@@ -32,7 +32,11 @@ const navLinks: { key: keyof ReturnType<typeof t>['nav']; route: NavRoute }[] = 
 export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const translations = t(locale);
-  const navigate = useNavigate();
+  const locationPath = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [locationPath]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle backdrop-blur-xl bg-bg-base/80">

@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import type { CaseStudy } from './data';
+import { TechBadge } from '~/shared/components/TechBadge';
 
 interface CaseCardProps {
   study: CaseStudy;
@@ -14,7 +15,8 @@ export function CaseCard({ study, locale, featured = false }: CaseCardProps) {
       params={{ locale, slug: study.slug }}
       className={`
         group relative block rounded-2xl bg-bg-surface border border-border-subtle
-        hover:border-border-default transition-all duration-300
+        hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)]
+        hover:-translate-y-0.5 transition-all duration-300
         overflow-hidden
         ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}
       `}
@@ -45,12 +47,7 @@ export function CaseCard({ study, locale, featured = false }: CaseCardProps) {
         {/* Tech badges */}
         <div className="flex flex-wrap gap-2 mb-6">
           {study.techs.map((tech) => (
-            <span
-              key={tech}
-              className="px-2.5 py-1 rounded-md text-xs font-mono bg-bg-elevated border border-border-subtle text-text-muted"
-            >
-              {tech}
-            </span>
+            <TechBadge key={tech}>{tech}</TechBadge>
           ))}
         </div>
 

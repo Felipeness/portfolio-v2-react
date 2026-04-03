@@ -50,7 +50,7 @@ export function WhatIDo({ locale }: WhatIDoProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-bg-base rounded-t-3xl min-h-screen flex items-center justify-center"
+      className="relative z-10 bg-bg-base rounded-t-3xl min-h-screen flex items-center justify-center shadow-[0_-20px_40px_rgba(0,0,0,0.3)]"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <span className="section-tag mb-12 inline-flex">
