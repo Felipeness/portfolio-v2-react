@@ -20,7 +20,7 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
   useScrollReveal(contentRef, { y: 30, stagger: 0.15, childSelector: '.content-section' });
 
   return (
-    <article className="max-w-4xl mx-auto px-6 md:px-12 lg:px-24 py-24 md:py-32">
+    <article className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-20 sm:py-24 md:py-32">
       {/* Back link */}
       <Link
         to="/$locale/cases"
@@ -37,7 +37,7 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
       {/* Header */}
       <div ref={headerRef}>
         <span className="section-tag mb-4">{study.tag}</span>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-primary mt-4 mb-4">
+        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary mt-4 mb-4">
           {study.title}
         </h1>
         <p className="text-lg text-text-tertiary leading-relaxed mb-8">
@@ -53,7 +53,7 @@ export function CaseDetail({ study, locale }: CaseDetailProps) {
 
         {/* Metrics */}
         {study.metrics && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-xl bg-bg-surface border border-border-subtle mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl bg-bg-surface border border-border-subtle mb-12 sm:mb-16">
             {study.metrics.map(({ value, label }) => (
               <div key={label} className="text-center">
                 <div className="gradient-text text-2xl font-heading font-bold">

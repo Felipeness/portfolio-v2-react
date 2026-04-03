@@ -16,12 +16,12 @@ export function BookHero({ locale }: BookHeroProps) {
   useScrollReveal(bookRef);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16 md:py-32">
-      <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-20 sm:py-24 md:py-32">
+      <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-16 items-center">
         {/* Book cover */}
         <div
           ref={bookRef}
-          className="scroll-animate w-full md:w-[300px] shrink-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
+          className="scroll-animate w-full max-w-[280px] mx-auto md:max-w-none md:mx-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
         >
           <div className="h-full bg-gradient-to-br from-orange via-brand-red to-brand-blue rounded-2xl flex items-center justify-center p-8">
             <div className="text-center">
@@ -42,7 +42,7 @@ export function BookHero({ locale }: BookHeroProps) {
         {/* Text content */}
         <div ref={textRef} className="min-w-0">
           <span className="section-tag mb-4">{translations.sections.book.tag}</span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mt-4 mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mt-4 mb-6">
             {translations.sections.book.title}
           </h2>
           <p className="text-base md:text-lg text-text-tertiary leading-relaxed mb-8">

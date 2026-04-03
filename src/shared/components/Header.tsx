@@ -1,8 +1,7 @@
-import { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
-import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 
@@ -42,37 +41,46 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
   }, [locationPath]);
 
   // Hide header on scroll down, show on scroll up
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (typeof window === 'undefined' || !headerRef.current) return;
 
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        start: 'top -80',
-        end: 99999,
-        onUpdate: (self) => {
-          if (self.direction === 1 && window.scrollY > 100) {
-            gsap.to(headerRef.current, { y: '-100%', duration: 0.3, ease: 'power2.out' });
-          } else {
-            gsap.to(headerRef.current, { y: '0%', duration: 0.3, ease: 'power2.out' });
-          }
-        },
-      });
-    });
+    let lastScrollY = 0;
 
-    return () => ctx.revert();
+    function onScroll() {
+      const currentY = window.scrollY;
+      if (currentY > 100 && currentY > lastScrollY) {
+        headerRef.current?.style.setProperty(
+          'transform',
+          'translateY(-100%)',
+        );
+      } else {
+        headerRef.current?.style.setProperty('transform', 'translateY(0)');
+      }
+      lastScrollY = currentY;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle backdrop-blur-xl bg-bg-base/80 will-change-transform">
+    <header
+      ref={headerRef}
+      className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle backdrop-blur-xl bg-bg-base/80 will-change-transform transition-transform duration-300"
+    >
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-orange focus:text-black focus:rounded-lg"
       >
         Skip to content
       </a>
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/$locale" params={{ locale }} className="flex items-center gap-2">
+        <Link
+          to="/$locale"
+          params={{ locale }}
+          className="flex items-center gap-2"
+        >
           <span className="font-heading font-bold text-lg gradient-text">
             felipe.dev
           </span>
@@ -99,7 +107,16 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
             onClick={onOpenCommandPalette}
             className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border-subtle text-xs text-text-muted hover:border-border-default hover:text-text-secondary transition-colors"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
@@ -116,7 +133,16 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               {mobileOpen ? (
                 <>
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -136,14 +162,14 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <nav className="md:hidden border-t border-border-subtle bg-bg-base/95 backdrop-blur-xl">
-          <div className="px-6 py-4 flex flex-col gap-3">
+        <nav className="md:hidden border-t border-border-subtle bg-bg-base/95 backdrop-blur-xl h-[calc(100dvh-4rem)]">
+          <div className="px-4 sm:px-6 py-6 flex flex-col gap-4">
             {navLinks.map(({ key, route }) => (
               <Link
                 key={key}
                 to={route}
                 params={{ locale }}
-                className="text-sm text-text-muted hover:text-text-primary transition-colors py-2"
+                className="text-base text-text-muted hover:text-text-primary transition-colors py-3"
                 onClick={() => setMobileOpen(false)}
               >
                 {translations.nav[key]}

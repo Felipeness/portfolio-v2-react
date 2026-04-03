@@ -27,7 +27,7 @@ export function ContactForm({ locale }: ContactFormProps) {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="max-w-xl space-y-6"
+      className="w-full max-w-xl space-y-6"
     >
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
@@ -76,7 +76,7 @@ export function ContactForm({ locale }: ContactFormProps) {
 
       <button
         type="submit"
-        className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20"
+        className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20"
       >
         {translations.contact.sendButton}
       </button>

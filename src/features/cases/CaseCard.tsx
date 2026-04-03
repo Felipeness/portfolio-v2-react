@@ -53,7 +53,7 @@ export function CaseCard({ study, locale, featured = false }: CaseCardProps) {
 
         {/* Metrics row */}
         {study.metrics && (
-          <div className={`grid gap-4 pt-4 border-t border-border-subtle ${featured ? 'grid-cols-4' : 'grid-cols-2'}`}>
+          <div className={`grid gap-4 pt-4 border-t border-border-subtle ${featured ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-2'}`}>
             {study.metrics.map(({ value, label }) => (
               <div key={label}>
                 <div className="gradient-text text-lg font-heading font-bold">

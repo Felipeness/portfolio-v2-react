@@ -24,10 +24,10 @@ function MetricCard({ metric }: { metric: { value: number; suffix: string; label
   useCountUp(valueRef, metric.value, { suffix: metric.suffix });
 
   return (
-    <div className="p-6 rounded-xl bg-bg-surface border border-border-subtle text-center">
+    <div className="p-4 sm:p-6 rounded-xl bg-bg-surface border border-border-subtle text-center">
       <span
         ref={valueRef}
-        className="gradient-text text-3xl font-heading font-bold block mb-2"
+        className="gradient-text text-2xl sm:text-3xl font-heading font-bold block mb-2"
       >
         0{metric.suffix}
       </span>

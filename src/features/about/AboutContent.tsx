@@ -14,7 +14,7 @@ export function AboutContent({ locale }: AboutContentProps) {
   useScrollReveal(bioRef);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start">
       <div ref={bioRef}>
         <div className="prose">
           {translations.about.bio.map((paragraph, i) => (
