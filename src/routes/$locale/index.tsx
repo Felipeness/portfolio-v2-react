@@ -31,13 +31,14 @@ function HomePage() {
     <>
       <Hero locale={validLocale} />
       <WhatIDo locale={validLocale} />
+      <SectionDivider />
       <FeaturedCases locale={validLocale} />
       <SectionDivider />
       <ImpactNumbers locale={validLocale} />
+      <SectionDivider />
       <Philosophy locale={validLocale} />
       <SectionDivider />
       <RecentWriting locale={validLocale} />
-      <SectionDivider />
       <ContactCTA locale={validLocale} />
     </>
   );
