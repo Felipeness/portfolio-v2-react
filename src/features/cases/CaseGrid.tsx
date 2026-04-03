@@ -15,15 +15,11 @@ export function CaseGrid({ cases, locale }: CaseGridProps) {
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr flex-1"
     >
       {cases.map((study) => (
         <div key={study.slug} className="case-card">
-          <CaseCard
-            study={study}
-            locale={locale}
-            featured={study.featured}
-          />
+          <CaseCard study={study} locale={locale} />
         </div>
       ))}
     </div>

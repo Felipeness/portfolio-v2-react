@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
-import { SectionHeader } from '~/shared/components/SectionHeader';
 import { CaseGrid } from '~/features/cases/CaseGrid';
 import { caseStudies } from '~/features/cases/data';
 
@@ -25,13 +24,21 @@ function CasesPage() {
   const translations = t(validLocale);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-20 sm:py-24 md:py-32">
-      <SectionHeader
-        tag={translations.sections.cases.tag}
-        title={translations.sections.cases.title}
-        description={translations.sections.cases.description}
-      />
-      <CaseGrid cases={caseStudies.filter((c) => c.locale === validLocale)} locale={validLocale} />
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-8 md:py-12 min-h-[calc(100vh-4rem)] flex flex-col">
+      <div className="mb-8 max-w-2xl">
+        <span className="section-tag mb-2">{translations.sections.cases.tag}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-primary mt-3 mb-2">
+          {translations.sections.cases.title}
+        </h2>
+        {translations.sections.cases.description && (
+          <p className="text-base text-text-tertiary leading-relaxed">
+            {translations.sections.cases.description}
+          </p>
+        )}
+      </div>
+      <div className="flex-1 flex flex-col">
+        <CaseGrid cases={caseStudies.filter((c) => c.locale === validLocale)} locale={validLocale} />
+      </div>
     </section>
   );
 }
