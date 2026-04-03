@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
 import { useScrollReveal } from '~/shared/animations/useScrollReveal';
+import { MagneticButton } from '~/shared/components/MagneticButton';
 
 interface ContactCTAProps {
   locale: Locale;
@@ -25,20 +26,24 @@ export function ContactCTA({ locale }: ContactCTAProps) {
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            to="/$locale/contact"
-            params={{ locale }}
-            className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20"
-          >
-            {translations.contactCTA.primary} &rarr;
-          </Link>
-          <Link
-            to="/$locale/cases"
-            params={{ locale }}
-            className="px-8 py-3.5 rounded-xl border border-border-default text-text-secondary font-medium text-sm hover:bg-bg-surface hover:border-border-subtle transition-colors"
-          >
-            {translations.contactCTA.secondary}
-          </Link>
+          <MagneticButton strength={0.3}>
+            <Link
+              to="/$locale/contact"
+              params={{ locale }}
+              className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20 inline-block"
+            >
+              {translations.contactCTA.primary} &rarr;
+            </Link>
+          </MagneticButton>
+          <MagneticButton strength={0.3}>
+            <Link
+              to="/$locale/cases"
+              params={{ locale }}
+              className="px-8 py-3.5 rounded-xl border border-border-default text-text-secondary font-medium text-sm hover:bg-bg-surface hover:border-border-subtle transition-colors inline-block"
+            >
+              {translations.contactCTA.secondary}
+            </Link>
+          </MagneticButton>
         </div>
       </div>
     </section>

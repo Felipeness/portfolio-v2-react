@@ -5,6 +5,7 @@ import { t } from '~/shared/i18n/utils';
 import { gsap, ScrollTrigger } from '~/shared/animations/gsap-setup';
 import { useSplitText } from '~/shared/animations/useSplitText';
 import { useLenis } from '~/shared/animations/useLenis';
+import { MagneticButton } from '~/shared/components/MagneticButton';
 
 interface HeroProps {
   locale: Locale;
@@ -156,20 +157,24 @@ export function Hero({ locale }: HeroProps) {
 
         {/* CTA Buttons */}
         <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            to="/$locale/cases"
-            params={{ locale }}
-            className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20"
-          >
-            {translations.hero.cta}
-          </Link>
-          <Link
-            to="/$locale/about"
-            params={{ locale }}
-            className="px-8 py-3.5 rounded-xl border border-border-default text-text-secondary font-medium text-sm hover:bg-bg-surface hover:border-border-subtle transition-colors"
-          >
-            {translations.hero.ctaSecondary}
-          </Link>
+          <MagneticButton strength={0.3}>
+            <Link
+              to="/$locale/cases"
+              params={{ locale }}
+              className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20 inline-block"
+            >
+              {translations.hero.cta}
+            </Link>
+          </MagneticButton>
+          <MagneticButton strength={0.3}>
+            <Link
+              to="/$locale/about"
+              params={{ locale }}
+              className="px-8 py-3.5 rounded-xl border border-border-default text-text-secondary font-medium text-sm hover:bg-bg-surface hover:border-border-subtle transition-colors inline-block"
+            >
+              {translations.hero.ctaSecondary}
+            </Link>
+          </MagneticButton>
         </div>
       </div>
 
