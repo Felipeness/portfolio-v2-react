@@ -10,9 +10,9 @@ import { isValidLocale } from '~/shared/types/locale';
 import type { Locale } from '~/shared/types/locale';
 import { Header } from '~/shared/components/Header';
 import { Footer } from '~/shared/components/Footer';
+import { BottomNav } from '~/shared/components/BottomNav';
 import { CommandPalette } from '~/shared/components/CommandPalette';
 import { ScrollProgress } from '~/shared/components/ScrollProgress';
-import { useScrollAnimations } from '~/shared/animations/useScrollAnimations';
 
 export const Route = createFileRoute('/$locale')({
   beforeLoad: ({ params }) => {
@@ -30,8 +30,6 @@ function LocaleLayout() {
   const pathname = useLocation({ select: (l) => l.pathname });
   const matches = useMatches();
   const routeKey = matches[matches.length - 1]?.id ?? '';
-
-  useScrollAnimations();
 
   useEffect(() => {
     document.documentElement.lang = validLocale === 'pt-br' ? 'pt-BR' : 'en';
@@ -53,11 +51,12 @@ function LocaleLayout() {
         id="main-content"
         key={routeKey}
         tabIndex={-1}
-        className="page-transition outline-none"
+        className="page-transition outline-none pb-20 md:pb-0"
       >
         <Outlet />
       </main>
       <Footer locale={validLocale} />
+      <BottomNav locale={validLocale} />
       <CommandPalette
         locale={validLocale}
         open={commandPaletteOpen}

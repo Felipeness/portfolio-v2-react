@@ -1,8 +1,10 @@
+import { useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
 import { caseStudies } from '~/features/cases/data';
 import { TechBadge } from '~/shared/components/TechBadge';
+import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 
 interface FeaturedCasesProps {
   locale: Locale;
@@ -10,6 +12,11 @@ interface FeaturedCasesProps {
 
 export function FeaturedCases({ locale }: FeaturedCasesProps) {
   const translations = t(locale);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useScrollReveal(headerRef);
+  useScrollReveal(gridRef, { childSelector: 'a', stagger: 0.1 });
 
   const topCases = caseStudies
     .filter((c) => c.locale === locale)
@@ -18,7 +25,7 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
   return (
     <section className="py-24 md:py-32 bg-bg-base">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16 scroll-animate">
+        <div ref={headerRef} className="text-center mb-16">
           <span className="section-tag mb-4 inline-flex">
             {translations.sections.cases.tag}
           </span>
@@ -27,14 +34,13 @@ export function FeaturedCases({ locale }: FeaturedCasesProps) {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topCases.map((study, i) => (
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {topCases.map((study) => (
             <Link
               key={study.slug}
               to="/$locale/cases/$slug"
               params={{ locale, slug: study.slug }}
-              className="scroll-animate group rounded-2xl bg-bg-surface border border-border-subtle p-6 flex flex-col justify-between min-h-[320px] hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300"
-              style={{ transitionDelay: `${i * 0.1}s` }}
+              className="group rounded-2xl bg-bg-surface border border-border-subtle p-6 flex flex-col justify-between min-h-[320px] hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300"
             >
               <div>
                 <span className="section-tag mb-4 inline-flex">

@@ -1,4 +1,4 @@
-import { useEffect, type RefObject } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 interface ScrollRevealOptions {
   childSelector?: string;
@@ -11,64 +11,64 @@ export function useScrollReveal(
   ref: RefObject<HTMLElement | null>,
   options: ScrollRevealOptions = {},
 ) {
-  const { childSelector, stagger = 0.1, y = 20, threshold = 0.15 } = options;
+  const { childSelector, stagger = 0.08, y = 20, threshold = 0.1 } = options;
+  const initialized = useRef(false);
 
   useEffect(() => {
-    if (!ref.current || typeof window === 'undefined') return;
+    if (!ref.current || typeof window === 'undefined' || initialized.current) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const elements = childSelector
-      ? Array.from(ref.current.querySelectorAll(childSelector))
-      : [ref.current];
+    initialized.current = true;
+    const container = ref.current;
 
-    // Set initial hidden state via inline styles
-    elements.forEach((el, i) => {
+    const elements = childSelector
+      ? Array.from(container.querySelectorAll(childSelector))
+      : [container];
+
+    if (elements.length === 0) return;
+
+    // Only animate elements that are BELOW the viewport
+    const viewportBottom = window.scrollY + window.innerHeight;
+
+    const toAnimate: HTMLElement[] = [];
+    elements.forEach((el) => {
       const htmlEl = el as HTMLElement;
-      htmlEl.style.opacity = '0';
-      htmlEl.style.transform = `translateY(${y}px)`;
-      htmlEl.style.transition = `opacity 0.6s ease ${i * stagger}s, transform 0.6s ease ${i * stagger}s`;
+      const elTop = htmlEl.getBoundingClientRect().top + window.scrollY;
+
+      if (elTop > viewportBottom - 100) {
+        // Below viewport — set up for animation
+        htmlEl.style.opacity = '0';
+        htmlEl.style.transform = `translateY(${y}px)`;
+        toAnimate.push(htmlEl);
+      }
+      // Elements already in viewport stay visible (no animation)
     });
 
-    // Use requestAnimationFrame to ensure elements are laid out before observing
+    if (toAnimate.length === 0) return;
+
+    // Add transitions after a frame to avoid flash
     requestAnimationFrame(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const htmlEl = entry.target as HTMLElement;
-              htmlEl.style.opacity = '1';
-              htmlEl.style.transform = 'translateY(0)';
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold },
-      );
+      toAnimate.forEach((el, i) => {
+        el.style.transition = `opacity 0.5s ease ${i * stagger}s, transform 0.5s ease ${i * stagger}s`;
+      });
+    });
 
-      elements.forEach((el) => observer.observe(el));
-
-      // Fallback: if elements are still invisible after 2 seconds, force-show them
-      const fallbackTimer = setTimeout(() => {
-        elements.forEach((el) => {
-          const htmlEl = el as HTMLElement;
-          if (htmlEl.style.opacity === '0') {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const htmlEl = entry.target as HTMLElement;
             htmlEl.style.opacity = '1';
             htmlEl.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
           }
         });
-      }, 2000);
+      },
+      { threshold },
+    );
 
-      // Store cleanup
-      (ref as any)._scrollRevealCleanup = () => {
-        clearTimeout(fallbackTimer);
-        observer.disconnect();
-      };
-    });
+    toAnimate.forEach((el) => observer.observe(el));
 
-    return () => {
-      if ((ref as any)._scrollRevealCleanup) {
-        (ref as any)._scrollRevealCleanup();
-      }
-    };
+    return () => observer.disconnect();
   }, [ref, childSelector, stagger, y, threshold]);
 }

@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
+import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 
 interface ContactCTAProps {
   locale: Locale;
@@ -8,22 +10,24 @@ interface ContactCTAProps {
 
 export function ContactCTA({ locale }: ContactCTAProps) {
   const translations = t(locale);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useScrollReveal(contentRef);
 
   return (
     <section className="bg-bg-base py-20 md:py-32 lg:py-40">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center scroll-animate">
+      <div ref={contentRef} className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary mb-10 leading-tight">
           {translations.contactCTA.title}
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            to="/$locale/contact"
-            params={{ locale }}
+          <a
+            href="mailto:felipe@felipeness.dev"
             className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20 inline-block"
           >
             {translations.contactCTA.primary} &rarr;
-          </Link>
+          </a>
           <Link
             to="/$locale/cases"
             params={{ locale }}

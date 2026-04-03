@@ -84,12 +84,6 @@ html {
   animation: page-enter 0.3s ease both;
 }
 
-/* Scroll-triggered reveal — disabled until site is stable.
-   All content is visible by default. */
-.scroll-animate {
-  /* no-op: content always visible */
-}
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -99,11 +93,6 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .scroll-animate {
-    opacity: 1;
-    transform: none;
   }
 }
 

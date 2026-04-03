@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import type { Locale } from '~/shared/types/locale';
 import type { ReactNode } from 'react';
 import { t } from '~/shared/i18n/utils';
+import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 
 const HIGHLIGHTED_PHRASES: Record<string, true> = {
   'TypeScript and Go': true,
@@ -32,11 +34,17 @@ interface PhilosophyProps {
 
 export function Philosophy({ locale }: PhilosophyProps) {
   const translations = t(locale);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useScrollReveal(textRef);
 
   return (
     <section className="py-24 md:py-40 bg-bg-base">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12">
-        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-heading font-medium text-text-tertiary leading-relaxed scroll-animate">
+        <p
+          ref={textRef}
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-heading font-medium text-text-tertiary leading-relaxed"
+        >
           {highlightPhrases(translations.philosophy.text)}
         </p>
       </div>
