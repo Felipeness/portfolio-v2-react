@@ -1,8 +1,6 @@
-import { useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
-import { useScrollReveal } from '~/shared/animations/useScrollReveal';
 import { blogPosts } from '~/features/blog/data';
 import { TechBadge } from '~/shared/components/TechBadge';
 
@@ -12,13 +10,6 @@ interface RecentWritingProps {
 
 export function RecentWriting({ locale }: RecentWritingProps) {
   const translations = t(locale);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useScrollReveal(gridRef, {
-    childSelector: '.post-card',
-    stagger: 0.12,
-    y: 30,
-  });
 
   const recentPosts = [...blogPosts]
     .filter((p) => p.locale === locale)
@@ -26,9 +17,9 @@ export function RecentWriting({ locale }: RecentWritingProps) {
     .slice(0, 4);
 
   return (
-    <section className="relative z-10 bg-bg-base py-32 md:py-40">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="flex items-center justify-between mb-16">
+    <section className="bg-bg-base py-20 md:py-32 lg:py-40">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
+        <div className="flex items-center justify-between mb-16 scroll-animate">
           <span className="section-tag inline-flex">
             {translations.recentWriting.title}
           </span>
@@ -41,16 +32,14 @@ export function RecentWriting({ locale }: RecentWritingProps) {
           </Link>
         </div>
 
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {recentPosts.map((post) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+          {recentPosts.map((post, i) => (
             <Link
               key={post.slug}
               to="/$locale/blog/$slug"
               params={{ locale, slug: post.slug }}
-              className="post-card group block rounded-2xl bg-bg-surface border border-border-subtle hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300 p-6"
+              className="scroll-animate group block rounded-2xl bg-bg-surface border border-border-subtle hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)] hover:-translate-y-0.5 transition-all duration-300 p-6"
+              style={{ transitionDelay: `${i * 0.1}s` }}
             >
               <div className="flex items-center gap-3 text-xs text-text-muted font-mono mb-3">
                 <time dateTime={post.date}>
@@ -69,7 +58,9 @@ export function RecentWriting({ locale }: RecentWritingProps) {
 
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <TechBadge key={tag} variant="secondary">{tag}</TechBadge>
+                  <TechBadge key={tag} variant="secondary">
+                    {tag}
+                  </TechBadge>
                 ))}
               </div>
             </Link>
