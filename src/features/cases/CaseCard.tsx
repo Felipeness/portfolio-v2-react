@@ -17,14 +17,14 @@ export function CaseCard({ study, locale, featured = false }: CaseCardProps) {
         group relative block rounded-2xl bg-bg-surface border border-border-subtle
         hover:border-orange/30 hover:shadow-[0_0_20px_rgba(229,101,0,0.08)]
         hover:-translate-y-0.5 transition-all duration-300
-        overflow-hidden
+        overflow-hidden h-full flex flex-col
         ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}
       `}
     >
       {/* Gradient accent line on hover */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-orange via-orange-hover to-orange-light opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      <div className={`p-6 ${featured ? 'lg:p-8' : ''}`}>
+      <div className={`p-6 flex flex-col flex-1 ${featured ? 'lg:p-8' : ''}`}>
         {/* Tag */}
         <span className="inline-block text-xs font-mono text-text-muted uppercase tracking-wider mb-3">
           {study.tag}
@@ -40,7 +40,7 @@ export function CaseCard({ study, locale, featured = false }: CaseCardProps) {
         </h3>
 
         {/* Description */}
-        <p className={`text-text-tertiary leading-relaxed mb-6 ${featured ? 'text-base' : 'text-sm'}`}>
+        <p className={`text-text-tertiary leading-relaxed mb-6 flex-1 ${featured ? 'text-base' : 'text-sm'}`}>
           {study.description}
         </p>
 

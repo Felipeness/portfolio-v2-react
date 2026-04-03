@@ -10,7 +10,6 @@ const translations = {
       about: 'About',
       oss: 'OSS',
       uses: 'Uses',
-      contact: 'Contact',
       search: 'Search',
     },
     hero: {
@@ -54,11 +53,6 @@ const translations = {
         title: 'Uses',
         description: 'Tools, hardware, and software I use daily.',
       },
-      contact: {
-        tag: 'Get in Touch',
-        title: 'Contact',
-        description: "Let's build something meaningful together.",
-      },
     },
     whatIDo: {
       title: 'What I Do',
@@ -99,16 +93,6 @@ const translations = {
       pages: 'Pages',
       actions: 'Actions',
       noResults: 'No results found.',
-    },
-    contact: {
-      nameLabel: 'Name',
-      namePlaceholder: 'Your name',
-      emailLabel: 'Email',
-      emailPlaceholder: 'your@email.com',
-      messageLabel: 'Message',
-      messagePlaceholder: 'What would you like to discuss?',
-      subjectPrefix: 'Portfolio Contact from',
-      sendButton: 'Send Message',
     },
     about: {
       bio: [
@@ -184,40 +168,74 @@ const translations = {
     uses: {
       categories: [
         {
-          name: 'Editor & Terminal',
+          name: 'Editor & IDE',
           items: [
-            { name: 'Cursor', description: 'AI-powered IDE built on VS Code. My daily driver.' },
-            { name: 'Claude Code', description: 'AI coding assistant for complex tasks.' },
-            { name: 'Warp', description: 'Modern terminal with AI integration.' },
-            { name: 'Zsh + Oh My Zsh', description: 'Shell with plugins for productivity.' },
+            { name: 'VS Code', description: 'Primary editor with Vim keybindings for speed and precision.' },
+            { name: 'Claude Code CLI', description: 'AI coding assistant for complex architectural tasks and refactoring.' },
+            { name: 'Cursor', description: 'AI-powered IDE built on VS Code. Used for rapid prototyping and exploration.' },
           ],
         },
         {
-          name: 'Development',
+          name: 'Terminal',
           items: [
-            { name: 'TypeScript', description: 'Primary language for backend and frontend.' },
-            { name: 'Go', description: 'For performance-critical services and CLI tools.' },
-            { name: 'React + Next.js', description: 'Frontend framework of choice.' },
-            { name: 'NestJS', description: 'Backend framework for enterprise APIs.' },
-            { name: 'Docker + K8s', description: 'Containerization and orchestration.' },
-          ],
-        },
-        {
-          name: 'Productivity',
-          items: [
-            { name: 'Linear', description: 'Project management that respects developers.' },
-            { name: 'Notion', description: 'Knowledge base and documentation.' },
-            { name: 'Excalidraw', description: 'Architecture diagrams and whiteboarding.' },
-            { name: 'Raycast', description: 'Launcher and productivity tool for macOS.' },
+            { name: 'Windows Terminal', description: 'Modern terminal with tabs, panes, and GPU-accelerated rendering.' },
+            { name: 'PowerShell 7', description: 'Cross-platform shell with structured data pipelines.' },
+            { name: 'Oh My Posh', description: 'Custom prompt theme with git status, node version, and context indicators.' },
           ],
         },
         {
           name: 'Hardware',
           items: [
-            { name: 'MacBook Pro M3 Max', description: '64GB RAM — handles everything I throw at it.' },
-            { name: 'LG 5K UltraFine', description: 'Primary display for focused work.' },
-            { name: 'Keychron Q1 Pro', description: 'Mechanical keyboard with Gateron Browns.' },
-            { name: 'Sony WH-1000XM5', description: 'Noise-cancelling for deep focus sessions.' },
+            { name: 'Custom Desktop', description: 'Custom build running Windows 11. Built for heavy compilation and parallel workloads.' },
+            { name: 'Ultrawide 34"', description: 'Primary monitor for focused work — code on one side, terminal on the other.' },
+            { name: 'Mechanical Keyboard', description: 'Mechanical keyboard — the tactile feedback keeps the rhythm going.' },
+            { name: 'Logitech MX Master', description: 'Ergonomic mouse with customizable buttons and cross-device switching.' },
+          ],
+        },
+        {
+          name: 'Languages & Frameworks',
+          items: [
+            { name: 'TypeScript', description: 'Primary language for backend and frontend. Type-safety everywhere.' },
+            { name: 'Go', description: 'For systems programming, performance-critical APIs, and CLI tools.' },
+            { name: 'Python', description: 'Scripts, automation, and ML experiments.' },
+            { name: 'React & Next.js', description: 'Frontend framework of choice for SSR/SSG applications.' },
+            { name: 'NestJS & Fastify', description: 'Backend frameworks for enterprise APIs and microservices.' },
+            { name: 'Astro', description: 'Static site generation for content-heavy sites with minimal JS.' },
+          ],
+        },
+        {
+          name: 'Infrastructure',
+          items: [
+            { name: 'AWS', description: 'Primary cloud — ECS, Lambda, S3, CloudFront, RDS, SQS, and more.' },
+            { name: 'Docker + Compose', description: 'Containerization for local dev and production deployments.' },
+            { name: 'Terraform', description: 'Infrastructure as code for reproducible, auditable environments.' },
+            { name: 'GitHub Actions', description: 'CI/CD pipelines for testing, building, and deploying.' },
+            { name: 'Cloudflare', description: 'CDN, DNS, and edge computing for global distribution.' },
+          ],
+        },
+        {
+          name: 'Databases',
+          items: [
+            { name: 'PostgreSQL', description: 'Primary relational database. Battle-tested and reliable.' },
+            { name: 'Redis', description: 'In-memory cache, session store, and queue backend.' },
+            { name: 'MongoDB', description: 'Document store for flexible schema use cases.' },
+          ],
+        },
+        {
+          name: 'Observability',
+          items: [
+            { name: 'Grafana + Loki', description: 'Dashboards and log aggregation for distributed systems.' },
+            { name: 'OpenTelemetry', description: 'Distributed tracing and metrics collection across services.' },
+            { name: 'Sentry', description: 'Error tracking and performance monitoring with source maps.' },
+          ],
+        },
+        {
+          name: 'Daily Tools',
+          items: [
+            { name: 'Obsidian', description: 'Markdown-based notes, writing, and personal knowledge management.' },
+            { name: 'Figma', description: 'UI/UX design, prototyping, and design system management.' },
+            { name: 'Linear', description: 'Project management that respects developers. Fast and keyboard-driven.' },
+            { name: 'Notion', description: 'Team documentation, wikis, and collaborative knowledge base.' },
           ],
         },
       ],
@@ -232,7 +250,6 @@ const translations = {
       about: 'Sobre',
       oss: 'OSS',
       uses: 'Ferramentas',
-      contact: 'Contato',
       search: 'Buscar',
     },
     hero: {
@@ -276,11 +293,6 @@ const translations = {
         title: 'Ferramentas',
         description: 'Ferramentas, hardware e software que uso diariamente.',
       },
-      contact: {
-        tag: 'Fale Comigo',
-        title: 'Contato',
-        description: 'Vamos construir algo significativo juntos.',
-      },
     },
     whatIDo: {
       title: 'O Que Eu Faco',
@@ -321,16 +333,6 @@ const translations = {
       pages: 'Paginas',
       actions: 'Acoes',
       noResults: 'Nenhum resultado encontrado.',
-    },
-    contact: {
-      nameLabel: 'Nome',
-      namePlaceholder: 'Seu nome',
-      emailLabel: 'Email',
-      emailPlaceholder: 'seu@email.com',
-      messageLabel: 'Mensagem',
-      messagePlaceholder: 'O que gostaria de discutir?',
-      subjectPrefix: 'Contato do Portfolio de',
-      sendButton: 'Enviar Mensagem',
     },
     about: {
       bio: [
@@ -406,40 +408,74 @@ const translations = {
     uses: {
       categories: [
         {
-          name: 'Editor & Terminal',
+          name: 'Editor & IDE',
           items: [
-            { name: 'Cursor', description: 'IDE com IA baseada no VS Code. Meu editor principal.' },
-            { name: 'Claude Code', description: 'Assistente de codigo com IA para tarefas complexas.' },
-            { name: 'Warp', description: 'Terminal moderno com integracao de IA.' },
-            { name: 'Zsh + Oh My Zsh', description: 'Shell com plugins para produtividade.' },
+            { name: 'VS Code', description: 'Editor principal com keybindings Vim para velocidade e precisao.' },
+            { name: 'Claude Code CLI', description: 'Assistente de codigo com IA para tarefas arquiteturais complexas e refatoracao.' },
+            { name: 'Cursor', description: 'IDE com IA baseada no VS Code. Usado para prototipagem rapida e exploracao.' },
           ],
         },
         {
-          name: 'Desenvolvimento',
+          name: 'Terminal',
           items: [
-            { name: 'TypeScript', description: 'Linguagem principal para backend e frontend.' },
-            { name: 'Go', description: 'Para servicos criticos de performance e ferramentas CLI.' },
-            { name: 'React + Next.js', description: 'Framework frontend de escolha.' },
-            { name: 'NestJS', description: 'Framework backend para APIs enterprise.' },
-            { name: 'Docker + K8s', description: 'Containerizacao e orquestracao.' },
-          ],
-        },
-        {
-          name: 'Produtividade',
-          items: [
-            { name: 'Linear', description: 'Gestao de projetos que respeita desenvolvedores.' },
-            { name: 'Notion', description: 'Base de conhecimento e documentacao.' },
-            { name: 'Excalidraw', description: 'Diagramas de arquitetura e whiteboard.' },
-            { name: 'Raycast', description: 'Launcher e ferramenta de produtividade para macOS.' },
+            { name: 'Windows Terminal', description: 'Terminal moderno com abas, paineis e renderizacao GPU.' },
+            { name: 'PowerShell 7', description: 'Shell cross-platform com pipelines de dados estruturados.' },
+            { name: 'Oh My Posh', description: 'Tema de prompt customizado com status git, versao node e indicadores de contexto.' },
           ],
         },
         {
           name: 'Hardware',
           items: [
-            { name: 'MacBook Pro M3 Max', description: '64GB RAM — aguenta tudo que jogo nele.' },
-            { name: 'LG 5K UltraFine', description: 'Display principal para trabalho focado.' },
-            { name: 'Keychron Q1 Pro', description: 'Teclado mecanico com Gateron Browns.' },
-            { name: 'Sony WH-1000XM5', description: 'Cancelamento de ruido para sessoes de foco profundo.' },
+            { name: 'Desktop Custom', description: 'Build customizado com Windows 11. Feito para compilacao pesada e workloads paralelos.' },
+            { name: 'Ultrawide 34"', description: 'Monitor principal para trabalho focado — codigo de um lado, terminal do outro.' },
+            { name: 'Teclado Mecanico', description: 'Teclado mecanico — o feedback tatil mantem o ritmo.' },
+            { name: 'Logitech MX Master', description: 'Mouse ergonomico com botoes customizaveis e troca entre dispositivos.' },
+          ],
+        },
+        {
+          name: 'Linguagens & Frameworks',
+          items: [
+            { name: 'TypeScript', description: 'Linguagem principal para backend e frontend. Type-safety em tudo.' },
+            { name: 'Go', description: 'Para programacao de sistemas, APIs criticas de performance e ferramentas CLI.' },
+            { name: 'Python', description: 'Scripts, automacao e experimentos com ML.' },
+            { name: 'React & Next.js', description: 'Framework frontend de escolha para aplicacoes SSR/SSG.' },
+            { name: 'NestJS & Fastify', description: 'Frameworks backend para APIs enterprise e microsservicos.' },
+            { name: 'Astro', description: 'Geracao de sites estaticos para sites de conteudo com JS minimo.' },
+          ],
+        },
+        {
+          name: 'Infraestrutura',
+          items: [
+            { name: 'AWS', description: 'Cloud principal — ECS, Lambda, S3, CloudFront, RDS, SQS e mais.' },
+            { name: 'Docker + Compose', description: 'Containerizacao para dev local e deploys em producao.' },
+            { name: 'Terraform', description: 'Infraestrutura como codigo para ambientes reproduziveis e auditaveis.' },
+            { name: 'GitHub Actions', description: 'Pipelines CI/CD para testes, builds e deploys.' },
+            { name: 'Cloudflare', description: 'CDN, DNS e edge computing para distribuicao global.' },
+          ],
+        },
+        {
+          name: 'Bancos de Dados',
+          items: [
+            { name: 'PostgreSQL', description: 'Banco relacional principal. Testado em batalha e confiavel.' },
+            { name: 'Redis', description: 'Cache em memoria, session store e backend de filas.' },
+            { name: 'MongoDB', description: 'Document store para casos de uso com schema flexivel.' },
+          ],
+        },
+        {
+          name: 'Observabilidade',
+          items: [
+            { name: 'Grafana + Loki', description: 'Dashboards e agregacao de logs para sistemas distribuidos.' },
+            { name: 'OpenTelemetry', description: 'Tracing distribuido e coleta de metricas entre servicos.' },
+            { name: 'Sentry', description: 'Rastreamento de erros e monitoramento de performance com source maps.' },
+          ],
+        },
+        {
+          name: 'Ferramentas do Dia a Dia',
+          items: [
+            { name: 'Obsidian', description: 'Notas em Markdown, escrita e gestao de conhecimento pessoal.' },
+            { name: 'Figma', description: 'Design UI/UX, prototipagem e gestao de design system.' },
+            { name: 'Linear', description: 'Gestao de projetos que respeita desenvolvedores. Rapido e orientado a teclado.' },
+            { name: 'Notion', description: 'Documentacao de time, wikis e base de conhecimento colaborativa.' },
           ],
         },
       ],

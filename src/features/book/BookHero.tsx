@@ -21,7 +21,7 @@ export function BookHero({ locale }: BookHeroProps) {
         {/* Book cover */}
         <div
           ref={bookRef}
-          className="scroll-animate w-full max-w-[280px] mx-auto md:max-w-none md:mx-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
+          className="w-full max-w-[280px] mx-auto md:max-w-none md:mx-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
         >
           <div className="h-full bg-gradient-to-br from-orange via-brand-red to-brand-blue rounded-2xl flex items-center justify-center p-8">
             <div className="text-center">
@@ -61,7 +61,7 @@ export function BookHero({ locale }: BookHeroProps) {
           </div>
 
           <a
-            href="https://felipeness.dev/book"
+            href="https://github.com/Felipeness/the-whole-and-the-part"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors"
