@@ -1,13 +1,9 @@
-import { useLayoutEffect } from 'react';
-import type { RefObject } from 'react';
-import { gsap } from './gsap-setup';
-import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
+import { useEffect, type RefObject } from 'react';
 
 interface CountUpOptions {
-  duration?: number;
   suffix?: string;
   prefix?: string;
-  start?: string;
+  duration?: number;
 }
 
 export function useCountUp(
@@ -15,47 +11,35 @@ export function useCountUp(
   value: number,
   options: CountUpOptions = {},
 ) {
-  const {
-    duration = 2,
-    suffix = '',
-    prefix = '',
-    start = 'top 85%',
-  } = options;
+  useEffect(() => {
+    if (!ref.current || typeof window === 'undefined') return;
+    const element = ref.current;
+    const { suffix = '', prefix = '', duration = 2000 } = options;
 
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (prefersReducedMotion()) {
-      if (ref.current) {
-        ref.current.textContent = `${prefix}${value}${suffix}`;
-      }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      element.textContent = prefix + String(value) + suffix;
       return;
     }
-    if (!ref.current) return;
 
-    const element = ref.current;
-    const counter = { value: 0 };
-
-    const ctx = gsap.context(() => {
-      gsap.to(counter, {
-        value,
-        duration,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: element,
-          start,
-          once: true,
-        },
-        onUpdate: () => {
-          element.textContent = `${prefix}${Math.round(counter.value)}${suffix}`;
-        },
-        onComplete: () => {
-          element.textContent = `${prefix}${value}${suffix}`;
-        },
-      });
-    }, element);
-
-    return () => {
-      ctx.revert();
-    };
-  }, [ref, value, duration, suffix, prefix, start]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const start = performance.now();
+          function update(now: number) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(value * eased);
+            element.textContent = prefix + String(current) + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref, value, options]);
 }
