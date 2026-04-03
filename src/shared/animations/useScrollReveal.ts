@@ -1,55 +1,49 @@
-import { useLayoutEffect } from 'react';
-import type { RefObject } from 'react';
-import { gsap } from './gsap-setup';
-import { prefersReducedMotion } from '~/shared/utils/prefersReducedMotion';
+import { useEffect, type RefObject } from 'react';
 
 interface ScrollRevealOptions {
-  y?: number;
-  duration?: number;
-  stagger?: number;
-  start?: string;
   childSelector?: string;
+  stagger?: number;
+  y?: number;
+  threshold?: number;
 }
 
 export function useScrollReveal(
   ref: RefObject<HTMLElement | null>,
   options: ScrollRevealOptions = {},
 ) {
-  const {
-    y = 30,
-    duration = 0.8,
-    stagger = 0.1,
-    start = 'top 85%',
-    childSelector,
-  } = options;
+  const { childSelector, stagger = 0.1, y = 30, threshold = 0.1 } = options;
 
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (prefersReducedMotion()) return;
-    if (!ref.current) return;
+  useEffect(() => {
+    if (!ref.current || typeof window === 'undefined') return;
 
-    const ctx = gsap.context(() => {
-      const targets = childSelector
-        ? ref.current!.querySelectorAll(childSelector)
-        : ref.current;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      gsap.set(targets, { y, opacity: 0 });
+    const elements = childSelector
+      ? Array.from(ref.current.querySelectorAll(childSelector))
+      : [ref.current];
 
-      gsap.to(targets, {
-        y: 0,
-        opacity: 1,
-        duration,
-        stagger,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: ref.current,
-          start,
-        },
-      });
-    }, ref);
+    elements.forEach((el, i) => {
+      const htmlEl = el as HTMLElement;
+      htmlEl.style.opacity = '0';
+      htmlEl.style.transform = `translateY(${y}px)`;
+      htmlEl.style.transition = `opacity 0.6s ease ${i * stagger}s, transform 0.6s ease ${i * stagger}s`;
+    });
 
-    return () => {
-      ctx.revert();
-    };
-  }, [ref, y, duration, stagger, start, childSelector]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const htmlEl = entry.target as HTMLElement;
+            htmlEl.style.opacity = '1';
+            htmlEl.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [ref, childSelector, stagger, y, threshold]);
 }
