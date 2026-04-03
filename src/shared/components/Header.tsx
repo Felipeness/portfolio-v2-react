@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link, useRouterState } from '@tanstack/react-router';
+import { useRef, useEffect } from 'react';
+import { Link } from '@tanstack/react-router';
 import type { Locale } from '~/shared/types/locale';
 import { t } from '~/shared/i18n/utils';
 import { ThemeToggle } from './ThemeToggle';
@@ -16,8 +16,7 @@ type NavRoute =
   | '/$locale/book'
   | '/$locale/about'
   | '/$locale/oss'
-  | '/$locale/uses'
-  | '/$locale/contact';
+  | '/$locale/uses';
 
 const navLinks: { key: keyof ReturnType<typeof t>['nav']; route: NavRoute }[] = [
   { key: 'cases', route: '/$locale/cases' },
@@ -26,19 +25,11 @@ const navLinks: { key: keyof ReturnType<typeof t>['nav']; route: NavRoute }[] = 
   { key: 'about', route: '/$locale/about' },
   { key: 'oss', route: '/$locale/oss' },
   { key: 'uses', route: '/$locale/uses' },
-  { key: 'contact', route: '/$locale/contact' },
 ];
 
 export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const translations = t(locale);
   const headerRef = useRef<HTMLElement>(null);
-  const locationPath = useRouterState({ select: (s) => s.location.pathname });
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [locationPath]);
 
   // Hide header on scroll down, show on scroll up
   useEffect(() => {
@@ -125,59 +116,8 @@ export function Header({ locale, onOpenCommandPalette }: HeaderProps) {
 
           <ThemeToggle />
           <LanguageToggle locale={locale} />
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-bg-surface transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {mobileOpen ? (
-                <>
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </>
-              ) : (
-                <>
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </>
-              )}
-            </svg>
-          </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <nav className="md:hidden border-t border-border-subtle bg-bg-base/95 backdrop-blur-xl h-[calc(100dvh-4rem)]">
-          <div className="px-4 sm:px-6 py-6 flex flex-col gap-4">
-            {navLinks.map(({ key, route }) => (
-              <Link
-                key={key}
-                to={route}
-                params={{ locale }}
-                className="text-base text-text-muted hover:text-text-primary transition-colors py-3"
-                onClick={() => setMobileOpen(false)}
-              >
-                {translations.nav[key]}
-              </Link>
-            ))}
-          </div>
-        </nav>
-      )}
     </header>
   );
 }
