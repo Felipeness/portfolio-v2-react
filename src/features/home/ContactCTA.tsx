@@ -23,7 +23,7 @@ export function ContactCTA({ locale }: ContactCTAProps) {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="mailto:felipe@felipeness.dev"
+            href="mailto:felipecoelho.ness@gmail.com"
             className="px-8 py-3.5 rounded-xl bg-orange text-white font-medium text-sm hover:bg-orange-hover transition-colors shadow-lg shadow-orange/20 inline-block"
           >
             {translations.contactCTA.primary} &rarr;
