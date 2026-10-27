@@ -27,7 +27,10 @@ export const Route = createRootRoute({
       },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://portfolio-v2-react.felipecoelho-ness.workers.dev' },
-      { name: 'twitter:card', content: 'summary' },
+      { property: 'og:image', content: 'https://portfolio-v2-react.felipecoelho-ness.workers.dev/og-default.png' },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
